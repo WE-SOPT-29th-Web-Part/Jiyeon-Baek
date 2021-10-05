@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  width: 1024px;
+  background-color: rgb(248, 249, 250);
+}
+
+a:link,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  margin-top: 1rem;
+}
+
+.header__logo {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+}
+
+.header__btn-group {
+  display: flex;
+  align-items: center;
+}
+
+.header__btn-group a {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.8rem;
+}
+
+.header__btn-group a:hover {
+  background-color: rgba(0, 0, 0, 0.043);
+  border-radius: 50%;
+}
+
+.search-btn {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.login-btn {
+  height: 2rem;
+  line-height: 2rem;
+  background-color: black;
+  color: white;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 1.2rem;
+}
+
+[class^="nav__menu--"] {
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.nav__menu div img {
+  margin-right: 0.3rem;
+  height: 1.2rem;
+  vertical-align: top;
+}
+
+.nav__menu--trending {
+  border-bottom: 2px solid black;
+}
+
+select[name="period"] {
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(img/triangle.png) no-repeat 85% 50%;
+  background-size: 0.6rem;
+  background-color: white;
+  width: 6rem;
+}
+
+.nav__more-btn {
+  width: 1.2rem;
+}
