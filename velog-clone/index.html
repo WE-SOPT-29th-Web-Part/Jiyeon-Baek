@@ -16,6 +16,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
+  <header class="header">
+    <h1 class="header__logo">velog</h1>
+    <div class="header__btn-group">
+      <a href="#"><input type="image" class="search-btn" src="img/search.png" alt="검색 버튼"></a>
+      <button type="button" class="login-btn">로그인</button>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav__menu">
+      <div class="nav__menu--trending">
+        <a href="#"><img src="img/trending.png" alt="trending">트렌딩</a>
+      </div>
+      <div class="nav__menu--recent">
+        <a href="#"><img src="img/recent.png" alt="recent">최신</a>
+      </div>
+      <div class="nav__menu--period">
+        <select name="period">
+          <option value="1">오늘</option>
+          <option value="2" selected>이번 주</option>
+          <option value="3">이번 달</option>
+          <option value="4">올해</option>
+        </select>
+      </div>
+    </div>
+    <input type="image" class="nav__more-btn" src="img/more.png" alt="더보기 버튼">
+  </nav>
 </body>
 </html>
