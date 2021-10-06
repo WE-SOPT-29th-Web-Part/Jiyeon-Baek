@@ -4,8 +4,7 @@
 
 body {
   margin: 0 auto;
-  max-width: 1680px;
-  padding: 0 6%;
+  max-width: 1728px;
   background-color: rgb(248, 249, 250);
 }
 
@@ -129,12 +128,15 @@ select[name="period"] {
   width: 1.2rem;
 }
 
+.main {
+  margin-bottom: 3rem;
+}
+
 .main__container {
   display: flex;
   flex-wrap: wrap;
   margin: -1rem;
   align-items: center;
-  justify-content: center;
 }
 
 .item {
@@ -224,4 +226,35 @@ select[name="period"] {
 .item__bottom .like img {
   width: 0.75rem;
   height: 0.75rem;
+}
+
+@media (max-width: 1919px) {
+  body {
+    width: 1376px;
+  }
+}
+
+@media (max-width: 1440px) {
+  body {
+    width: 1024px;
+  }
+}
+
+@media (max-width: 1056px) {
+  body {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: 1056px) {
+  .item {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .item {
+    margin: 0;
+    width: 100%;
+  }
 }
