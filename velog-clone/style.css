@@ -54,19 +54,32 @@ button {
   border-radius: 50%;
 }
 
-.search-btn {
+.header__btn-group > * {
+  margin-left: 0.8rem;
+}
+
+.header__search-btn {
   width: 1.125rem;
   height: 1.125rem;
 }
 
-.login-btn {
+.header__write-btn {
   height: 2rem;
-  line-height: 2rem;
-  background-color: black;
-  color: white;
+  background-color: white;
   padding: 0 1rem;
+  border: 1.5px solid black;
   border-radius: 1rem;
   font-weight: bold;
+}
+
+.header__profile {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.header__more-btn {
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .nav {
