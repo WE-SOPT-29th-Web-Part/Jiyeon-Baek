@@ -84,7 +84,7 @@ button {
   height: 1.2rem;
 }
 
-[class^="nav__menu--"] {
+.nav__menu div {
   font-size: 1.2rem;
   padding: 1rem;
 }
@@ -95,16 +95,16 @@ button {
   vertical-align: top;
 }
 
-.nav__menu--trending {
+.nav__trending {
   border-bottom: 2px solid black;
   font-weight: 600;
 }
 
-.nav__menu--recent a {
+.nav__recent a {
   color: rgb(134, 142, 150);
 }
 
-.nav__menu--recent a img,
+.nav__recent a img,
 .nav__more-btn {
   filter: grayscale(100%) opacity(0.4);
 }
@@ -164,7 +164,7 @@ select[name="period"] {
   padding: 1rem;
 }
 
-.item__content--title {
+.item__title {
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 600;
@@ -175,7 +175,7 @@ select[name="period"] {
   white-space: nowrap;
 }
 
-.item__content--description {
+.item__description {
   margin: 0px 0px 1.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -208,22 +208,22 @@ select[name="period"] {
   vertical-align: middle;
 }
 
-.item__bottom--writer {
+.item__writer {
   color: rgb(134, 142, 150);
 }
 
-.item__bottom--writer img {
+.item__writer img {
   border-radius: 50%;
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.item__bottom--writer b {
+.item__writer b {
   font-weight: 600;
   color: black;
 }
 
-.item__bottom--like img {
+.item__like img {
   width: 0.75rem;
   height: 0.75rem;
 }
