@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "NanumBarunpen";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "NanumBarunpen";
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background-color: thistle;
+}
+
+.header__logo {
+  font-size: 32px;
+  text-align: center;
+  text-shadow: 2px 2px 1px black;
+  height: 50px;
+  line-height: 50px;
+}
+
+.options {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.options button {
+  background-color: lavender;
+  border: 0;
+  border-radius: 10px;
+  padding: 2px 10px;
+}
+
+.options button:hover {
+  font-weight: 900;
+  box-shadow: 1px 1px 2px;
+}
+
+.todos {
+  background-color: whitesmoke;
+  display: flex;
+  flex-grow: 1;
+}
+
+.todos__today,
+.todos__tomorrow {
+  width: 100%;
+  border-right: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todos__items {
+  flex-grow: 1;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.todos__item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+}
+
+.todos__name {
+  height: 36px;
+  line-height: 36px;
+}
+
+.todos__delete {
+  background-color: transparent;
+}
+
+.todos__input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 10px 20px;
+}
+
+.todos__input:focus {
+  font-size: 120%;
+}
+
+.todos__btn-wrapper {
+  padding: 10px 0;
+}
+
+.todos__add {
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  font-size: 30px;
+  line-height: 30px;
+  transition-duration: 0.5s;
+}
+
+.todos__add:hover {
+  color: black;
+  background-color: thistle;
+}
+
+.footer {
+  color: white;
+  background-color: thistle;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
