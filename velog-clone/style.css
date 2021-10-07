@@ -164,7 +164,7 @@ select[name="period"] {
   padding: 1rem;
 }
 
-.item__content .title {
+.item__content--title {
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 600;
@@ -175,7 +175,7 @@ select[name="period"] {
   white-space: nowrap;
 }
 
-.item__content .description {
+.item__content--description {
   margin: 0px 0px 1.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -208,22 +208,22 @@ select[name="period"] {
   vertical-align: middle;
 }
 
-.item__bottom .writer {
+.item__bottom--writer {
   color: rgb(134, 142, 150);
 }
 
-.item__bottom .writer img {
+.item__bottom--writer img {
   border-radius: 50%;
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.item__bottom .writer b {
+.item__bottom--writer b {
   font-weight: 600;
   color: black;
 }
 
-.item__bottom .like img {
+.item__bottom--like img {
   width: 0.75rem;
   height: 0.75rem;
 }
