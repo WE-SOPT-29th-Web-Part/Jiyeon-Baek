@@ -72,6 +72,11 @@ button {
   font-weight: bold;
 }
 
+.header__write-btn:hover {
+  background-color: rgb(134, 142, 150);
+  color: white;
+}
+
 .header__profile {
   width: 2.2rem;
   height: 2.2rem;
