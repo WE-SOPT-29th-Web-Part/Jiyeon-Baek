@@ -16,4 +16,8 @@ const addTag = (text) => {
   span.innerText = text;
   document.body.insertBefore(span, tagInput);
   tagInput.value = "";
-}
+
+  span.addEventListener("click", () => {
+    span.remove();
+  });
+};
