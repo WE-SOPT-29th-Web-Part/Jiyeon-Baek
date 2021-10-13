@@ -169,6 +169,10 @@ button {
   border-top: none;
 }
 
+.nav__dropdown-list:hover {
+  background: rgb(248, 249, 250);
+}
+
 .nav__dropdown-list.active {
   color: rgb(18, 184, 134);
 }
