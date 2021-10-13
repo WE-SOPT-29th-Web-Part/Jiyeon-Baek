@@ -281,6 +281,49 @@ button {
   height: 0.75rem;
 }
 
+.modal__background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.modal__background.show,
+.modal__wrapper.show {
+  display: block;
+}
+
+.modal__wrapper {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.modal__content .item {
+  width: 20rem;
+  transform: none;
+}
+
+.modal__close {
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+}
+
 @media (max-width: 1919px) {
   body {
     width: 1376px;
