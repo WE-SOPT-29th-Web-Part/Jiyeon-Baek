@@ -10,11 +10,11 @@ const modalContent = document.querySelector(".modal__content");
 const closeBtn = document.querySelector(".modal__close");
 
 navPeriod.addEventListener("click", () => {
-  if (navDropdown.style.visibility == "hidden") {
-    navDropdown.style.visibility = "visible";
+  if (navDropdown.style.visibility === "visible") {
+    navDropdown.style.visibility = "hidden";
     return;
   }
-  navDropdown.style.visibility = "hidden";
+  navDropdown.style.visibility = "visible";
 });
 
 navDropdown.addEventListener("click", (e) => {
