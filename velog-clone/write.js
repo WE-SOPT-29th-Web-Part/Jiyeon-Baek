@@ -22,6 +22,7 @@ const addTag = (text) => {
   tagInput.value = "";
 
   span.addEventListener("click", () => {
+    filterArr.splice(filterArr.indexOf(text), 1);
     span.remove();
   });
 };
