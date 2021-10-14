@@ -105,6 +105,28 @@ li {
   border-bottom: 1px solid lightgray;
 }
 
+.todos__item--left {
+  display: flex;
+  align-items: center;
+}
+
+.todos__check {
+  display: none;
+}
+
+.todos__check + label {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: url("img/blank.png") center/100% no-repeat;
+}
+
+.todos__check:checked + label {
+  background-image: url("img/checkbox.png");
+}
+
 .todos__name {
   height: 36px;
   line-height: 36px;
