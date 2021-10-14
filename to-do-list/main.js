@@ -51,6 +51,17 @@ const onAdd = (index) => {
   i++;
   inputs[index].value = "";
 
+  checkbox.addEventListener("click", (event) => {
+    const checkTarget = event.target;
+    if (checkTarget.checked) {
+      span.style.textDecoration = "line-through";
+      span.style.color = "#AAAAAA";
+    } else {
+      span.style.textDecoration = "none";
+      span.style.color = "black";
+    }
+  });
+
   deleteBtn.addEventListener("click", () => {
     li.remove();
   });
