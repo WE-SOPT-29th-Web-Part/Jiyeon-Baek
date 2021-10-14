@@ -3,6 +3,7 @@
 const inputs = document.querySelectorAll('.todos__input');
 const addBtns = document.querySelectorAll('.todos__add');
 const allItems = document.querySelectorAll('.todos__items');
+let i = 0;
 
 addBtns.forEach((btn, index) =>
   btn.addEventListener("click", () => {
@@ -21,10 +22,18 @@ inputs.forEach((input, index) =>
 const onAdd = (index) => {
   if (!inputs[index].value) return;
 
+  const div = document.createElement("div");
+  const checkbox = document.createElement("input");
+  const label = document.createElement("label");
   const li = document.createElement("li");
   const span = document.createElement("span");
   const deleteBtn = document.createElement("button");
 
+  div.setAttribute("class", "todos__item--left");
+  checkbox.setAttribute("class", "todos__check");
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.setAttribute("id", "check" + i);
+  label.setAttribute("for", "check" + i);
   li.setAttribute("class", "todos__item");
   span.setAttribute("class", "todos__name");
   deleteBtn.setAttribute("class", "todos__delete");
@@ -33,9 +42,13 @@ const onAdd = (index) => {
   span.innerText = inputs[index].value;
 
   allItems[index].appendChild(li);
-  li.appendChild(span);
+  div.appendChild(checkbox);
+  div.appendChild(label);
+  div.appendChild(span);
+  li.appendChild(div);
   li.appendChild(deleteBtn);
 
+  i++;
   inputs[index].value = "";
 
   deleteBtn.addEventListener("click", () => {
