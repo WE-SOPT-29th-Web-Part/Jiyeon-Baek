@@ -1,9 +1,26 @@
 "use strict";
 
+const dates = document.querySelectorAll('.todos__date');
 const inputs = document.querySelectorAll('.todos__input');
 const addBtns = document.querySelectorAll('.todos__add');
 const allItems = document.querySelectorAll('.todos__items');
+const nav = document.querySelector('.options');
+const todos = document.querySelectorAll('.todos > section');
 let i = 0;
+
+const getDate = (str) => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  const today = `${year}년 ${month}월 ${day}일`;
+  const tomorrow = `${year}년 ${month}월 ${day + 1}일`;
+  const when = (str === "today" ? today : tomorrow);
+  return when;
+}
+dates[0].innerText = getDate("today");
+dates[1].innerText = getDate("tomorrow");
 
 addBtns.forEach((btn, index) =>
   btn.addEventListener("click", () => {
@@ -38,7 +55,6 @@ const onAdd = (index) => {
   span.setAttribute("class", "todos__name");
   deleteBtn.setAttribute("class", "todos__delete");
 
-  deleteBtn.innerText = "X";
   span.innerText = inputs[index].value;
 
   allItems[index].appendChild(li);
@@ -66,9 +82,6 @@ const onAdd = (index) => {
     li.remove();
   });
 };
-
-const nav = document.querySelector('.options');
-const todos = document.querySelectorAll('.todos > section');
 
 nav.addEventListener("click", (event) => {
   if (event.target.className.includes("options__today")) {
