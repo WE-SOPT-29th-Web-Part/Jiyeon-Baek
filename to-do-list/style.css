@@ -93,6 +93,16 @@ li {
   visibility: visible;
 }
 
+.todos__date {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: gray;
+}
+
+.todos__header {
+  margin-block-start: 0;
+}
+
 .todos__items {
   flex-grow: 1;
   width: 100%;
@@ -102,6 +112,7 @@ li {
 .todos__item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid lightgray;
 }
 
@@ -120,7 +131,7 @@ li {
   margin-right: 0.5rem;
   width: 1rem;
   height: 1rem;
-  background: url("img/blank.png") center/100% no-repeat;
+  background: url("img/blank.png") center center/100% no-repeat;
 }
 
 .todos__check:checked + label {
@@ -133,12 +144,9 @@ li {
 }
 
 .todos__delete {
-  background-color: transparent;
-  font-weight: 900;
-}
-
-.todos__delete:hover {
-  text-shadow: 2px 1px 1px thistle;
+  width: 16px;
+  height: 16px;
+  background: transparent url(img/delete.png) center center/100% no-repeat;
 }
 
 .todos__input {
