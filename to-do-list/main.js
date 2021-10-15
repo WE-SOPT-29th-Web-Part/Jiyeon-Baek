@@ -36,6 +36,16 @@ inputs.forEach((input, index) =>
   })
 );
 
+const countCheckbox = () => {
+  const checkToday = Array.from(document.querySelectorAll('.todos__today .todos__check')).filter(box => box.checked);
+  const totalToday = Array.from(document.querySelectorAll('.todos__today .todos__check'));
+  const checkTomorrow = Array.from(document.querySelectorAll('.todos__tomorrow .todos__check')).filter(box => box.checked);
+  const totalTomorrow = Array.from(document.querySelectorAll('.todos__tomorrow .todos__check'));
+
+  document.querySelector('.todos__today .todos__done').innerText = `Check : ${checkToday.length} / ${totalToday.length}`;
+  document.querySelector('.todos__tomorrow .todos__done').innerText = `Check : ${checkTomorrow.length} / ${totalTomorrow.length}`;
+}
+
 const onAdd = (index) => {
   if (!inputs[index].value) return;
 
@@ -76,11 +86,15 @@ const onAdd = (index) => {
       span.style.textDecoration = "none";
       span.style.color = "black";
     }
+    countCheckbox();
   });
 
   deleteBtn.addEventListener("click", () => {
     li.remove();
+    countCheckbox();
   });
+
+  countCheckbox();
 };
 
 nav.addEventListener("click", (event) => {

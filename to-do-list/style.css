@@ -95,20 +95,30 @@ li {
   visibility: visible;
 }
 
-.todos__date {
+.todos__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: calc(100% - 60px);
+}
+
+.todos__date,
+.todos__done {
   font-size: 1rem;
-  margin: 0.5rem 0;
-  color: gray;
+  margin: 0.8rem 0;
+  color: #bb71c7;
 }
 
 .todos__header {
   margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .todos__items {
   flex-grow: 1;
   width: 100%;
   padding: 0 30px;
+  margin-top: 0.8rem;
 }
 
 .todos__item {
