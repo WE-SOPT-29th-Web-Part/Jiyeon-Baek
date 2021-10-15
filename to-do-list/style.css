@@ -63,9 +63,11 @@ li {
   border-radius: 10px;
   padding: 2px 10px;
   margin: 0 8px;
+  font-size: 0.9rem;
 }
 
-.options button:hover {
+.options button:hover,
+.options button:focus {
   font-weight: 900;
   box-shadow: 1px 1px 2px;
 }
@@ -84,7 +86,7 @@ li {
   align-items: center;
   width: 0;
   visibility: hidden;
-  transition: all 300ms ease;
+  transition: width 300ms ease;
 }
 
 .todos__today.open,
@@ -106,7 +108,7 @@ li {
 .todos__items {
   flex-grow: 1;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .todos__item {
@@ -126,12 +128,12 @@ li {
 }
 
 .todos__check + label {
-  display: inline-block;
   cursor: pointer;
-  margin-right: 0.5rem;
-  width: 1rem;
-  height: 1rem;
+  margin-right: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   background: url("img/blank.png") center center/100% no-repeat;
+  transition: background-image 300ms ease;
 }
 
 .todos__check:checked + label {
@@ -139,27 +141,27 @@ li {
 }
 
 .todos__name {
-  height: 36px;
-  line-height: 36px;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
 }
 
 .todos__delete {
-  width: 16px;
-  height: 16px;
-  background: transparent url(img/delete.png) center center/100% no-repeat;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: transparent url("img/delete.png") center center/100% no-repeat;
 }
 
 .todos__input {
-  width: 100%;
-  border: 0;
+  font-size: 1rem;
+  width: calc(100% - 60px);
   outline: 0;
+  border: 0;
+  border-radius: 20px;
   padding: 10px 20px;
 }
 
 .todos__input:focus {
-  font-size: 120%;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  box-shadow: 2px 2px 10px lightgray;
 }
 
 .todos__btn-wrapper {
@@ -171,10 +173,10 @@ li {
   color: white;
   background-color: black;
   border-radius: 50%;
-  font-size: 30px;
-  line-height: 30px;
-  height: 30px;
-  width: 30px;
+  font-size: 2rem;
+  line-height: 2rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 .todos__add:hover {
