@@ -2,16 +2,18 @@
   --main-bg: rgb(248, 249, 250);
   --sub-bg: white;
   --period-bg: white;
+  --close-bg: black;
   --font-color: black;
   --icon-brightness: 1;
   --icon-invert: 0;
   --nav-border: black;
 }
 
-[data-theme="dark"] {
+:root[color-theme="dark"] {
   --main-bg: #222;
   --sub-bg: rgb(60, 60, 60);
-  --period-bg: lightgray;
+  --period-bg: #fcfcfc;
+  --close-bg: lightpink;
   --font-color: white;
   --icon-brightness: 0;
   --icon-invert: 1;
@@ -209,7 +211,7 @@ button {
 }
 
 .nav__dropdown-list.active {
-  color: rgb(18, 184, 134);
+  color: hotpink;
 }
 
 .nav__more-btn {
@@ -348,7 +350,7 @@ button {
 }
 
 .modal__close {
-  background-color: black;
+  background-color: var(--close-bg);
   color: white;
   border-radius: 50%;
   font-size: 1.2rem;
