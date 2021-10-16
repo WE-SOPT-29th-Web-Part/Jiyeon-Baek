@@ -1,3 +1,23 @@
+:root {
+  --main-bg: rgb(248, 249, 250);
+  --sub-bg: white;
+  --period-bg: white;
+  --font-color: black;
+  --icon-brightness: 1;
+  --icon-invert: 0;
+  --nav-border: black;
+}
+
+[data-theme="dark"] {
+  --main-bg: #222;
+  --sub-bg: rgb(60, 60, 60);
+  --period-bg: lightgray;
+  --font-color: white;
+  --icon-brightness: 0;
+  --icon-invert: 1;
+  --nav-border: white;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,14 +25,14 @@
 body {
   margin: 0 auto;
   max-width: 1728px;
-  background-color: rgb(248, 249, 250);
+  background-color: var(--main-bg);
 }
 
 a:link,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: black;
+  color: var(--font-color);
 }
 
 button {
@@ -33,6 +53,7 @@ button {
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
+  color: var(--font-color);
 }
 
 .header__btn-group {
@@ -56,6 +77,13 @@ button {
 
 .header__btn-group > * {
   margin-left: 0.8rem;
+}
+
+.header__search-btn,
+.header__more-btn,
+.nav__trending img,
+.item__like img {
+  filter: brightness(var(--icon-brightness)) invert(var(--icon-invert));
 }
 
 .header__search-btn {
@@ -116,7 +144,7 @@ button {
 }
 
 .nav__trending {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--nav-border);
   font-weight: 600;
 }
 
@@ -126,7 +154,8 @@ button {
 
 .nav__recent a img,
 .nav__more-btn {
-  filter: grayscale(100%) opacity(0.4);
+  filter: grayscale(100%) opacity(0.4) brightness(var(--icon-brightness))
+    invert(var(--icon-invert));
 }
 
 .nav__period {
@@ -139,7 +168,7 @@ button {
   width: 6rem;
   cursor: pointer;
   border-radius: 4px;
-  background-color: white;
+  background-color: var(--period-bg);
   position: relative;
   box-shadow: rgb(0 0 0 / 5%) 0px 0px 4px;
 }
@@ -168,6 +197,7 @@ button {
   border-top: 1px solid rgb(241, 243, 245);
   font-weight: 600;
   font-size: 0.875rem;
+  background-color: var(--period-bg);
 }
 
 .nav__dropdown-list:first-child {
@@ -199,7 +229,8 @@ button {
 
 .item {
   width: 20rem;
-  background-color: white;
+  color: var(--font-color);
+  background-color: var(--sub-bg);
   border-radius: 4px;
   box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
   margin: 1rem;
@@ -254,7 +285,7 @@ button {
 
 .item__bottom {
   padding: 0.625rem 1rem;
-  border-top: 1px solid rgb(248, 249, 250);
+  border-top: 2px solid rgb(248, 249, 250);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -278,7 +309,7 @@ button {
 
 .item__writer b {
   font-weight: 600;
-  color: black;
+  color: var(--font-color);
 }
 
 .item__like img {
