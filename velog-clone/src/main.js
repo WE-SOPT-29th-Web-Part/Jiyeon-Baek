@@ -10,11 +10,11 @@ const modalWrapper = document.querySelector(".modal__wrapper");
 const modalContent = document.querySelector(".modal__content");
 const closeBtn = document.querySelector(".modal__close");
 
-// 다크모드 구현
-document.documentElement.setAttribute("color-theme", "light"); // 기본값을 light로 설정
+// 다크모드 구현 (기본값을 light로 설정)
+document.documentElement.setAttribute("color-theme", "light");
 
+// 체크 여부에 따라 setItem으로 로컬 스토리지에 아이템 저장
 checkbox.addEventListener("change", (e) => {
-  // setItem을 통해 로컬 스토리지에 아이템 저장
   if (e.target.checked) {
     localStorage.setItem("color-theme", "dark");
     document.documentElement.setAttribute("color-theme", "dark");
@@ -24,10 +24,14 @@ checkbox.addEventListener("change", (e) => {
   }
 });
 
-const currentTheme = localStorage.getItem("color-theme"); // getItem을 통해 로컬 스토리지에서 아이템의 값(테마) 알아내기
-if (currentTheme) { // 로컬 스토리지에 아이템이 있으면
-  document.documentElement.setAttribute("color-theme", currentTheme); // 그 아이템의 값으로 color-theme 설정
-  if (currentTheme === "dark") { // 다크모드면 checked 속성을 true로 설정
+// getItem을 통해 로컬 스토리지에서 아이템의 값(테마) 알아내기
+const currentTheme = localStorage.getItem("color-theme");
+// 로컬 스토리지에 아이템이 있으면
+if (currentTheme) {
+  // 그 아이템의 값으로 color-theme 설정
+  document.documentElement.setAttribute("color-theme", currentTheme);
+  // 다크모드면 checked 속성을 true로 설정
+  if (currentTheme === "dark") {
     checkbox.checked = true;
   }
 }
@@ -53,7 +57,8 @@ navDropdown.addEventListener("click", (e) => {
 // 모달창 구현
 items.forEach(item => {
   item.addEventListener("click", () => {
-    document.body.style.overflow = "hidden"; // body 스크롤 방지
+    // body 스크롤 방지
+    document.body.style.overflow = "hidden";
     modalBackground.classList.add("show");
     modalWrapper.classList.add("show");
 
