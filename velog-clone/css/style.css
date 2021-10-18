@@ -1,4 +1,4 @@
-:root {
+:root[color-theme="light"] {
   --main-bg: rgb(248, 249, 250);
   --sub-bg: white;
   --period-bg: white;
