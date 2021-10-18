@@ -8,26 +8,35 @@ const nav = document.querySelector('.options');
 const todos = document.querySelectorAll('.todos > section');
 let i = 0;
 
-const getDate = (str) => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
+// 오늘, 내일 날짜 계산 후 표시
+const findDate = (str) => {
+  const today = new Date();
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth() + 1;
+  const day = today.getDate();
 
-  const today = `${year}년 ${month}월 ${day}일`;
-  const tomorrow = `${year}년 ${month}월 ${day + 1}일`;
-  const when = (str === "today" ? today : tomorrow);
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowYear = tomorrow.getFullYear();
+  const tomorrowMonth = tomorrow.getMonth() + 1;
+  const nextDay = tomorrow.getDate();
+
+  const todayStr = `${todayYear}년 ${todayMonth}월 ${day}일`;
+  const tomorrowStr = `${tomorrowYear}년 ${tomorrowMonth}월 ${nextDay}일`;
+  const when = (str === "today" ? todayStr : tomorrowStr);
   return when;
 }
-dates[0].innerText = getDate("today");
-dates[1].innerText = getDate("tomorrow");
+dates[0].innerText = findDate("today");
+dates[1].innerText = findDate("tomorrow");
 
+// + 버튼으로 todo 추가
 addBtns.forEach((btn, index) =>
   btn.addEventListener("click", () => {
     onAdd(index);
   })
 );
 
+// 엔터로 todo 추가
 inputs.forEach((input, index) =>
   input.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
@@ -36,16 +45,18 @@ inputs.forEach((input, index) =>
   })
 );
 
+// 할 일 몇 개 남았는지 표시
 const countCheckbox = () => {
-  const checkToday = Array.from(document.querySelectorAll('.todos__today .todos__check')).filter(box => box.checked);
-  const totalToday = Array.from(document.querySelectorAll('.todos__today .todos__check'));
-  const checkTomorrow = Array.from(document.querySelectorAll('.todos__tomorrow .todos__check')).filter(box => box.checked);
-  const totalTomorrow = Array.from(document.querySelectorAll('.todos__tomorrow .todos__check'));
+  const checkTodayArr = Array.from(document.querySelectorAll('.todos__today .todos__check')).filter(box => box.checked);
+  const totalTodayArr = Array.from(document.querySelectorAll('.todos__today .todos__check'));
+  const checkTomorrowArr = Array.from(document.querySelectorAll('.todos__tomorrow .todos__check')).filter(box => box.checked);
+  const totalTomorrowArr = Array.from(document.querySelectorAll('.todos__tomorrow .todos__check'));
 
-  document.querySelector('.todos__today .todos__done').innerText = `Check : ${checkToday.length} / ${totalToday.length}`;
-  document.querySelector('.todos__tomorrow .todos__done').innerText = `Check : ${checkTomorrow.length} / ${totalTomorrow.length}`;
+  document.querySelector('.todos__today .todos__done').innerText = `Check : ${checkTodayArr.length} / ${totalTodayArr.length}`;
+  document.querySelector('.todos__tomorrow .todos__done').innerText = `Check : ${checkTomorrowArr.length} / ${totalTomorrowArr.length}`;
 }
 
+// 동적으로 태그 삽입하고 삭제하기
 const onAdd = (index) => {
   if (!inputs[index].value) return;
 
@@ -77,8 +88,9 @@ const onAdd = (index) => {
   i++;
   inputs[index].value = "";
 
-  checkbox.addEventListener("click", (event) => {
+  checkbox.addEventListener("change", (event) => {
     const checkTarget = event.target;
+    // 체크된 항목만 글자 색상 바꾸고 줄 긋기
     if (checkTarget.checked) {
       span.style.textDecoration = "line-through";
       span.style.color = "#AAAAAA";
@@ -89,6 +101,7 @@ const onAdd = (index) => {
     countCheckbox();
   });
 
+  // 휴지통 버튼 클릭하면 todo 삭제
   deleteBtn.addEventListener("click", () => {
     li.remove();
     countCheckbox();
@@ -97,6 +110,7 @@ const onAdd = (index) => {
   countCheckbox();
 };
 
+// 오늘만 보기, 내일만 보기, 모두 보기 기능
 nav.addEventListener("click", (event) => {
   if (event.target.className.includes("options__today")) {
     todos[0].classList.add("open");
