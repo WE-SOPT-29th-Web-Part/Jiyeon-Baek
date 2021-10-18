@@ -93,6 +93,59 @@ button {
   height: 1.125rem;
 }
 
+.header__mode-text {
+  color: var(--font-color);
+  font-size: 0.9rem;
+}
+
+.header__switch {
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+}
+
+.header__checkbox {
+  visibility: hidden;
+}
+
+.header__mode-btn {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background-color: #ccc;
+  box-shadow: inset 1px 5px 1px #999;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.header__mode-btn:before {
+  position: absolute;
+  content: "";
+  height: 1.4rem;
+  width: 1.4rem;
+  left: 0.3rem;
+  bottom: 0.3rem;
+  border-radius: 20px;
+  background-color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.header__checkbox:checked + .header__mode-btn {
+  background-color: lightpink;
+  box-shadow: inset 1px 5px 1px hotpink;
+}
+
+.header__checkbox:checked + .header__mode-btn:before {
+  -webkit-transition: translateX(2rem);
+  -ms-transform: translateX(2rem);
+  transform: translateX(2rem);
+}
+
 .header__write-btn {
   height: 2rem;
   background-color: white;
