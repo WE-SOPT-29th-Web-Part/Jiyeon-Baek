@@ -446,4 +446,14 @@ button {
     margin: 1rem;
     width: calc(100% - 2rem);
   }
+  .header__btn-group > * {
+    margin-left: 0.4rem;
+  }
+  .header__mode-text,
+  .header__write-btn {
+    font-size: 0.6rem;
+  }
+  .header__write-btn {
+    padding: 0 0.6rem;
+  }
 }
