@@ -10,7 +10,7 @@ const rightArrow = document.querySelector(".slider__right-arrow");
 const itemContainer = document.querySelector(".item-container");
 const items = document.querySelectorAll(".item");
 let index = 0;
-let slideWidth;
+let slideWidth = document.querySelector(".item").clientWidth;
 const slideGap = Number(window.getComputedStyle(itemContainer).gap.slice(0, -2));
 const slideLength = items.length;
 const modalBackground = document.querySelector(".modal__background");
@@ -67,18 +67,22 @@ window.addEventListener("resize", () => {
   slideWidth = document.querySelector(".item").clientWidth;
 });
 
-itemContainer.style.width = (slideWidth + slideGap) * slideLength + "px";
+const moveSlide = () => {
+  itemContainer.style.transform = `translateX(-${(slideWidth + slideGap) * index}px)`;
+}
 
 leftArrow.addEventListener("click", () => {
-  if (index == 0) return;
-  index--;
-  itemContainer.style.transform = `translateX(-${(slideWidth + slideGap) * index}px)`;
+  if (index !== 0) {
+    index--;
+    moveSlide();
+  }
 });
 
 rightArrow.addEventListener("click", () => {
-  if (index == slideLength - 1) return;
-  index++;
-  itemContainer.style.transform = `translateX(-${(slideWidth + slideGap) * index}px)`;
+  if (index !== slideLength - 1) {
+    index++;
+    moveSlide();
+  }
 });
 
 // 모달창 구현
