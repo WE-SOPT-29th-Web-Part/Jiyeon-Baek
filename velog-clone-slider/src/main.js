@@ -9,6 +9,10 @@ const leftArrow = document.querySelector(".slider__left-arrow");
 const rightArrow = document.querySelector(".slider__right-arrow");
 const itemContainer = document.querySelector(".item-container");
 const items = document.querySelectorAll(".item");
+const slideWidth = document.querySelector(".item").clientWidth;
+const slideGap = Number(window.getComputedStyle(itemContainer).gap.slice(0, -2));
+const slideLength = items.length;
+let index = 0;
 const modalBackground = document.querySelector(".modal__background");
 const modalWrapper = document.querySelector(".modal__wrapper");
 const modalContent = document.querySelector(".modal__content");
@@ -59,11 +63,6 @@ navDropdown.addEventListener("click", (e) => {
 });
 
 // 슬라이더 구현
-const slideWidth = document.querySelector(".item").clientWidth;
-const slideGap = Number(window.getComputedStyle(itemContainer).gap.slice(0, -2));
-const slideLength = items.length;
-let index = 0;
-
 itemContainer.style.width = (slideWidth + slideGap) * slideLength + "px";
 
 leftArrow.addEventListener("click", () => {
