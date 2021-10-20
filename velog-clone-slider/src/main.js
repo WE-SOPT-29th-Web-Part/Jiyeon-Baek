@@ -63,8 +63,11 @@ navDropdown.addEventListener("click", (e) => {
 });
 
 // 슬라이더 구현
+itemContainer.style.width = (slideWidth + slideGap) * slideLength + "px";
+
 window.addEventListener("resize", () => {
   slideWidth = document.querySelector(".item").clientWidth;
+  itemContainer.style.width = (slideWidth + slideGap) * slideLength + "px";
 });
 
 const moveSlide = () => {
@@ -79,10 +82,15 @@ leftArrow.addEventListener("click", () => {
 });
 
 rightArrow.addEventListener("click", () => {
-  if (index !== slideLength - 1) {
-    index++;
-    moveSlide();
+  const passedArea = (slideWidth + slideGap) * (index + 1);
+  const sliderWidth = Number(window.getComputedStyle(slider).width.slice(0, -2));
+  const containerWidth = Number(window.getComputedStyle(itemContainer).width.slice(0, -2));
+  if (passedArea + sliderWidth > containerWidth) {
+    itemContainer.style.transform = `translateX(-${containerWidth - sliderWidth + slideGap}px)`;
+    return;
   }
+  index++;
+  moveSlide();
 });
 
 // 모달창 구현
