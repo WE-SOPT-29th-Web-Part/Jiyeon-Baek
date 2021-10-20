@@ -274,7 +274,7 @@ button {
 
 .slider {
   width: 100%;
-  margin: auto;
+  margin-bottom: 3rem;
   position: relative;
   overflow-x: hidden;
 }
@@ -309,7 +309,7 @@ button {
   flex-wrap: nowrap;
   align-items: center;
   margin: 1rem;
-  gap: 2rem;
+  gap: 1rem;
   transition: 300ms;
 }
 
@@ -443,6 +443,7 @@ button {
   padding: 0;
   display: block;
   margin: 0 auto;
+  margin-top: 1rem;
   text-shadow: 0px 0px 5px darkred;
 }
 
@@ -473,5 +474,15 @@ button {
 @media (max-width: 767px) {
   .item {
     width: calc(100% - 2rem);
+  }
+  .header__btn-group > * {
+    margin-left: 0.4rem;
+  }
+  .header__mode-text,
+  .header__write-btn {
+    font-size: 0.6rem;
+  }
+  .header__write-btn {
+    padding: 0 0.6rem;
   }
 }
