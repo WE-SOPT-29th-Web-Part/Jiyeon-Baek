@@ -467,13 +467,13 @@ button {
 
 @media (max-width: 1056px) {
   .item {
-    width: calc(50% - 2rem);
+    width: calc(50vw - 2rem);
   }
 }
 
 @media (max-width: 767px) {
   .item {
-    width: calc(100% - 2rem);
+    width: calc(100vw - 4rem);
   }
   .header__btn-group > * {
     margin-left: 0.4rem;
