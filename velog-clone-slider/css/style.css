@@ -472,7 +472,6 @@ button {
 
 @media (max-width: 767px) {
   .item {
-    margin: 1rem;
     width: calc(100% - 2rem);
   }
 }
