@@ -10,6 +10,7 @@ const rightArrow = document.querySelector(".slider__right-arrow");
 const itemContainer = document.querySelector(".item-container");
 const items = document.querySelectorAll(".item");
 let index = 0;
+let isLastSlide = false;
 let slideWidth = document.querySelector(".item").clientWidth;
 const slideGap = Number(window.getComputedStyle(itemContainer).gap.slice(0, -2));
 const slideLength = items.length;
@@ -70,27 +71,42 @@ window.addEventListener("resize", () => {
   itemContainer.style.width = (slideWidth + slideGap) * slideLength + "px";
 });
 
-const moveSlide = () => {
+const moveSlide = (direction) => {
+  switch (direction) {
+    case "left":
+      index--;
+      isLastSlide = false;
+      break;
+    case "right":
+      const passedArea = (slideWidth + slideGap) * (index + 1);
+      const sliderWidth = Number(window.getComputedStyle(slider).width.slice(0, -2));
+      const containerWidth = Number(window.getComputedStyle(itemContainer).width.slice(0, -2));
+      if (passedArea + sliderWidth > containerWidth) {
+        if (!isLastSlide) {
+          isLastSlide = true;
+          index++;
+          itemContainer.style.transform = `translateX(-${containerWidth - sliderWidth + slideGap}px)`;
+        }
+        return;
+      }
+      index++;
+      break;
+    default:
+      return;
+  }
   itemContainer.style.transform = `translateX(-${(slideWidth + slideGap) * index}px)`;
 }
 
 leftArrow.addEventListener("click", () => {
   if (index !== 0) {
-    index--;
-    moveSlide();
+    moveSlide("left");
   }
 });
 
 rightArrow.addEventListener("click", () => {
-  const passedArea = (slideWidth + slideGap) * (index + 1);
-  const sliderWidth = Number(window.getComputedStyle(slider).width.slice(0, -2));
-  const containerWidth = Number(window.getComputedStyle(itemContainer).width.slice(0, -2));
-  if (passedArea + sliderWidth > containerWidth) {
-    itemContainer.style.transform = `translateX(-${containerWidth - sliderWidth + slideGap}px)`;
-    return;
+  if (index !== slideLength - 1) {
+    moveSlide("right");
   }
-  index++;
-  moveSlide();
 });
 
 // 모달창 구현
