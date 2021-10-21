@@ -1,10 +1,10 @@
 'use strict';
 
 const tagInput = document.querySelector(".tag-input");
-let set = new Set();
+const set = new Set();
 
 tagInput.addEventListener("keyup", (e) => {
-  let targetValue = e.target.value;
+  const targetValue = e.target.value;
   if (e.key === "Enter") {
     if (!targetValue || set.has(targetValue)) {
       e.target.value = "";
