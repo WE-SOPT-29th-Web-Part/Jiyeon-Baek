@@ -1,28 +1,30 @@
 'use strict';
 
 const tagInput = document.querySelector(".tag-input");
-let filterArr = [];
+const set = new Set();
 
 tagInput.addEventListener("keyup", (e) => {
+  const targetValue = e.target.value;
   if (e.key === "Enter") {
-    if (filterArr.includes(e.target.value) || !e.target.value) {
+    if (!targetValue || set.has(targetValue)) {
       e.target.value = "";
       return;
     }
-    filterArr.push(e.target.value);
-    addTag(e.target.value);
+    addTag(targetValue);
   }
 });
 
 const addTag = (text) => {
+  set.add(text);
+
   const span = document.createElement("span");
   span.setAttribute("class", "tag-span");
   span.innerText = text;
   document.body.insertBefore(span, tagInput);
   tagInput.value = "";
 
-  span.addEventListener("click", () => {
-    filterArr.splice(filterArr.indexOf(text), 1);
+  span.addEventListener("click", (e) => {
+    set.delete(e.target.innerText);
     span.remove();
   });
 };
