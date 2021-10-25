@@ -1,6 +1,13 @@
 import React from 'react';
 
 const DateInput = ({ year, month, date, setYear, setMonth, setDate }) => {
+  const setToday = () => {
+    const today = new Date();
+    setYear(today.getFullYear());
+    setMonth(today.getMonth() + 1);
+    setDate(today.getDate());
+  }
+  
   // input 값이 변화하면 그 값을 year, month, date로 바꿔준다.
   const handleChange = (e, setState) => {
     setState(e.target.value);
@@ -8,7 +15,7 @@ const DateInput = ({ year, month, date, setYear, setMonth, setDate }) => {
 
   return (
     <div id="dateInput">
-      <button>오늘</button>
+      <button onClick={setToday}>오늘</button>
       <div>
         <input onChange={(e) => handleChange(e, setYear)} type="text" className="dateInput__input" value={year} />년
         <input onChange={(e) => handleChange(e, setMonth)} type="text" className="dateInput__input" value={month} />월
