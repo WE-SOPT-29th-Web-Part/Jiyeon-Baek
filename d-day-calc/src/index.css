@@ -1,0 +1,54 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  box-shadow: 5px 5px 15px 5px #000;
+}
+
+#dateInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateInput__input {
+  width: 50px;
+}
+
+#centerText {
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+#result {
+  width: 100%;
+}
+
+.text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
