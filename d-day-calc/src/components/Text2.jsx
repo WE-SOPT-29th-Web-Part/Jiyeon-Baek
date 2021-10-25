@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 const Text2 = ({ year, month, date }) => {
   const [inputValue, setInputValue] = useState("");
@@ -14,7 +14,12 @@ const Text2 = ({ year, month, date }) => {
     printDate(e.target.value);
   }
 
-  const printDate = (value) => {
+  const printDate = useCallback((value) => {
+    if(value === "") {
+      setResultDate("yyyy년 mm월 dd일");
+      return;
+    }
+    
     const tempDate = new Date();
 
     tempDate.setFullYear(year);
@@ -23,7 +28,11 @@ const Text2 = ({ year, month, date }) => {
 
     const result = `${tempDate.getFullYear()}년 ${tempDate.getMonth() + 1}월 ${tempDate.getDate()}일`;
     setResultDate(result);
-  };
+  }, [year, month, date]);
+
+  useEffect(() => {
+    printDate(inputValue);
+  }, [inputValue, printDate]);
 
   return (
     <div className="text">
