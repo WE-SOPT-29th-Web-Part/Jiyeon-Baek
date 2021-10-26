@@ -13,14 +13,20 @@
   <link rel="icon" sizes="96x96" href="https://static.velog.io/favicons/favicon-96x96.png">
   <link rel="apple-touch-icon" sizes="152x152" href="https://static.velog.io/favicons/apple-icon-152x152.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="src/main.js" defer></script>
 </head>
 <body>
   <header class="header">
     <h1 class="header__logo">velog</h1>
     <div class="header__btn-group">
       <a href="#"><img class="header__search-btn" src="img/search.png" alt="검색 버튼"></a>
-      <button class="header__write-btn" type="button">새 글 작성</button>
+      <span class="header__mode-text">Dark Mode</span>
+      <label class="header__switch">
+        <input class="header__checkbox" type="checkbox">
+        <span class="header__mode-btn"></span>
+      </label>
+      <button class="header__write-btn" type="button" onclick="location.href='write.html'">새 글 작성</button>
       <img class="header__profile" src="img/user.png" alt="프로필 이미지">
       <input class="header__more-btn" type="image" src="img/triangle.png" alt="더보기 버튼">
     </div>
@@ -34,12 +40,14 @@
         <a href="#"><img src="img/recent.png" alt="최신">최신</a>
       </div>
       <div class="nav__period">
-        <select name="period">
-          <option value="1">오늘</option>
-          <option value="2" selected>이번 주</option>
-          <option value="3">이번 달</option>
-          <option value="4">올해</option>
-        </select>
+        <span class="nav__text">이번 주</span>
+        <div class="nav__arrow"></div>
+        <ul class="nav__dropdown">
+          <li class="nav__dropdown-list">오늘</li>
+          <li class="nav__dropdown-list active">이번 주</li>
+          <li class="nav__dropdown-list">이번 달</li>
+          <li class="nav__dropdown-list">올해</li>
+        </ul>
       </div>
     </div>
     <input type="image" class="nav__more-btn" src="img/more.png" alt="더보기 버튼">
@@ -49,7 +57,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 1. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -66,7 +74,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 2. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -83,7 +91,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 3. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -100,7 +108,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 4. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -117,7 +125,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 5. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -134,7 +142,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 6. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -151,7 +159,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 7. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -168,7 +176,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 8. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -185,7 +193,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 9. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -202,7 +210,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 10. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -219,7 +227,7 @@
       <div class="item">
         <img class="item__thumbnail" src="img/sopt.png" alt="썸네일 이미지">
         <div class="item__content">
-          <h2 class="item__title">[WEB Part] css flex 개념을 활용한 클론코딩</h2>
+          <h2 class="item__title">[WEB Part] 11. css flex 개념을 활용한 클론코딩</h2>
           <p class="item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vel
             incidunt praesentium minus deleniti reiciendis fugit ex expedita quae eos impedit!</p>
           <div class="item__info">
@@ -235,5 +243,12 @@
       </div>
     </div>
   </main>
+  <div class="modal">
+    <div class="modal__background"></div>
+    <div class="modal__wrapper">
+      <div class="modal__content"></div>
+      <button class="modal__close">X</button>
+    </div>
+  </div>
 </body>
 </html>
