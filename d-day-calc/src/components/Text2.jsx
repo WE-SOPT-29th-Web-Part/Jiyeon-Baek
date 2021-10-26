@@ -43,7 +43,7 @@ const Text2 = ({ year, month, date }) => {
       <div>
         D-
         <input type="text" value={inputValue} onChange={handleChange} />
-        는?
+        일은?
       </div>
       <div>{resultDate}</div>
     </div>

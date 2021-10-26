@@ -15,7 +15,7 @@ const DateInput = ({ year, month, date, setYear, setMonth, setDate }) => {
 
   return (
     <div id="dateInput">
-      <button onClick={setToday}>오늘</button>
+      <button onClick={setToday}>오늘을 기준으로</button>
       <div>
         <input
           onChange={(e) => handleChange(e, setYear)}
