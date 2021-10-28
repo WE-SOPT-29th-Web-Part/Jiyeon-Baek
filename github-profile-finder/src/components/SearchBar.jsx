@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const SearchBar = ({ setUserInfo }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState('');
   const handleChange = (e) => {
     setUser(e.target.value);
   };
