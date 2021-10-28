@@ -28,7 +28,7 @@ input {
   border-radius: 5px;
   font-size: 1rem;
   text-align: center;
-  margin: 0 0.1rem;
+  margin: 0 0.2rem;
 }
 
 #root {
@@ -68,7 +68,7 @@ input {
 }
 
 #dateInput > button {
-  background-color: #abc1d5;
+  background-color: #abc1ff;
   border: 0;
   outline: 0;
   border-radius: 20px;
@@ -79,11 +79,13 @@ input {
   box-shadow: 0px 3px 3px grey;
 }
 
+#dateInput > button:hover {
+  background-color: #779cff;
+  color: white;
+}
+
 #dateInput > div {
-  background-color: thistle;
-  border-radius: 20px;
-  padding: 0.6rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0.6rem;
 }
 
 .dateInput__input {

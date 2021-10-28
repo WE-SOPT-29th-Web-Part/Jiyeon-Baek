@@ -9,8 +9,15 @@ const DateInput = ({ year, month, date, setYear, setMonth, setDate }) => {
   };
 
   // input 값이 변화하면 그 값을 year, month, date로 바꿔준다.
+  // 양의 정수만 들어갈 수 있도록 제한
   const handleChange = (e, setState) => {
-    setState(e.target.value);
+    let num = e.target.value;
+    if (num < 0 || !isFinite(num)) return;
+    num = num.toString();
+    if (num[0] === '0') {
+      num = num.replace(/^0+/, '');
+    }
+    setState(num);
   };
 
   return (

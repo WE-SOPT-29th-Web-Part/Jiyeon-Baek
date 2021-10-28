@@ -6,13 +6,19 @@ const Text1 = ({ year, month, date }) => {
   const [resultDate, setResultDate] = useState('yyyy년 mm월 dd일');
 
   const handleChange = (e) => {
-    if (!e.target.value) {
+    let num = e.target.value;
+    if (!num) {
       setInputValue('');
       setResultDate('yyyy년 mm월 dd일');
       return;
     }
-    setInputValue(e.target.value);
-    printDate(e.target.value);
+    if (num < 0 || !isFinite(num)) return;
+    num = num.toString();
+    if (num[0] === '0') {
+      num = num.replace(/^0+/, '');
+    }
+    setInputValue(num);
+    printDate(num);
   };
 
   const printDate = useCallback(
