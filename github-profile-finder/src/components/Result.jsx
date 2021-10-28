@@ -2,28 +2,38 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Result = ({ userInfo, setUserInfo }) => {
-  return userInfo.avatar_url ? (
+  const {
+    avatar_url,
+    name,
+    login,
+    bio,
+    html_url,
+    followers,
+    following,
+    public_repos,
+  } = userInfo;
+  return avatar_url ? (
     <Root>
       <button onClick={() => setUserInfo({})}>닫기</button>
-      <img src={userInfo.avatar_url} alt="프로필 이미지" />
-      <h3>{userInfo.name}</h3>
-      <h4>{userInfo.login}</h4>
-      <p>{userInfo.bio}</p>
-      <a href={userInfo.html_url} target="_blank">
+      <img src={avatar_url} alt="프로필 이미지" />
+      <h3>{name}</h3>
+      <h4>{login}</h4>
+      <p>{bio}</p>
+      <a href={html_url} target="_blank" rel="noopener noreferrer">
         Visit Github
       </a>
       <UL>
         <li>
           <strong>Followers</strong>
-          {userInfo.followers}
+          {followers}
         </li>
         <li>
           <strong>Following</strong>
-          {userInfo.following}
+          {following}
         </li>
         <li>
           <strong>Repos</strong>
-          {userInfo.public_repos}
+          {public_repos}
         </li>
       </UL>
     </Root>
