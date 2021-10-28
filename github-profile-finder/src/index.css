@@ -1,9 +1,5 @@
 @import 'reset-css';
 
-body {
-  margin: 0;
-}
-
 html,
 body,
 #root {
@@ -13,4 +9,8 @@ body,
 
 #root {
   background-color: rgb(27, 29, 33);
+}
+
+* {
+  box-sizing: border-box;
 }
