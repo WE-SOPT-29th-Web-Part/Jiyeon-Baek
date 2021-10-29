@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import History from './History';
 
 const SearchBar = ({ setUserInfo }) => {
   const [user, setUser] = useState('');
+  const [userList, setUserList] = useState([]);
+  const maxHistory = 3;
+
   const handleChange = (e) => {
     setUser(e.target.value);
   };
@@ -20,18 +24,45 @@ const SearchBar = ({ setUserInfo }) => {
     // axios는 서버 통신을 돕는 툴
     const { data } = await axios.get(`https://api.github.com/users/${user}`);
     setUserInfo(data);
+
+    // 배열 속에 user가 있는지 확인하고 없으면 추가
+    if (!userList.includes(user)) {
+      // history에 최대 3개까지만 저장
+      let tempList;
+      tempList =
+        userList.length >= maxHistory
+          ? [...userList, user].slice(1, 4)
+          : [...userList, user];
+
+      setUserList(tempList);
+      localStorage.setItem('userList', JSON.stringify(tempList));
+    }
+
     setUser('');
   };
 
+  useEffect(() => {
+    // localStorage를 이용
+    const storageList = JSON.parse(localStorage.getItem('userList'));
+    setUserList(storageList);
+  }, []);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        value={user}
-        onChange={handleChange}
-        type="text"
-        placeholder="Github 프로필을 검색해 보세요."
+    <>
+      <form onSubmit={handleSubmit}>
+        <Input
+          value={user}
+          onChange={handleChange}
+          type="text"
+          placeholder="Github 프로필을 검색해 보세요."
+        />
+      </form>
+      <History
+        userList={userList}
+        setUserList={setUserList}
+        setUserInfo={setUserInfo}
       />
-    </form>
+    </>
   );
 };
 
