@@ -42,10 +42,6 @@ const UserList = styled.ul`
     margin-top: 3px;
   }
 
-  span {
-    cursor: pointer;
-  }
-
   button {
     color: white;
     border: none;
