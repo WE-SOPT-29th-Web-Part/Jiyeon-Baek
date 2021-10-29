@@ -50,7 +50,7 @@ const Root = styled.article`
   color: white;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin: 16px 0;
   background-color: rgb(44, 48, 53);
   width: 390px;
   border-radius: 20px;
@@ -133,8 +133,8 @@ const UL = styled.ul`
     justify-content: center;
     line-height: 1.5;
     background-color: rgb(36, 39, 43);
-    border-left: 5px solid rgb(44, 48, 53);
-    border-right: 5px solid rgb(44, 48, 53);
+    border-left: 2px solid rgb(44, 48, 53);
+    border-right: 2px solid rgb(44, 48, 53);
 
     &:nth-child(1) {
       border-left: none;
