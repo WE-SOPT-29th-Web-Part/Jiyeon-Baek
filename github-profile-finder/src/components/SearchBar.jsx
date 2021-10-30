@@ -19,11 +19,30 @@ const SearchBar = ({ setUserInfo }) => {
     // submit 하면 새로고침 되는 것을 방지
     e.preventDefault();
 
+    setUserInfo((currentUserInfo) => ({
+      ...currentUserInfo,
+      status: 'pending', // 로딩 중
+    }));
+
     // user 값을 이용하여 서버에 있는 데이터 받아오기
     // 서버 통신에 시간 소요 -> 비동기 처리 (async, await)
     // axios는 서버 통신을 돕는 툴
-    const { data } = await axios.get(`https://api.github.com/users/${user}`);
-    setUserInfo(data);
+    try {
+      const { data } = await axios.get(`https://api.github.com/users/${user}`);
+      setUserInfo((currentUserInfo) => ({
+        ...currentUserInfo,
+        data,
+        status: 'resolved', // 성공
+      }));
+      setUserInfo(data);
+    } catch (error) {
+      setUserInfo((currentUserInfo) => ({
+        ...currentUserInfo,
+        data: null,
+        status: 'rejected',
+      }));
+      console.log(error);
+    }
 
     // 배열 속에 user가 있는지 확인하고 없으면 추가
     if (!userList.includes(user)) {

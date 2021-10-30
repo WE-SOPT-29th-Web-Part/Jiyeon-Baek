@@ -12,7 +12,7 @@ const Result = ({ userInfo, setUserInfo }) => {
     following,
     public_repos,
   } = userInfo;
-  return avatar_url ? (
+  return (
     <Root>
       <button onClick={() => setUserInfo({})}>닫기</button>
       <img src={avatar_url} alt="프로필 이미지" />
@@ -37,8 +37,6 @@ const Result = ({ userInfo, setUserInfo }) => {
         </li>
       </UL>
     </Root>
-  ) : (
-    <></>
   );
 };
 
