@@ -32,7 +32,7 @@ const SearchBar = ({ setUserInfo }) => {
       setUserInfo((currentUserInfo) => ({
         ...currentUserInfo,
         data,
-        status: 'resolved', // 성공
+        status: 'resolved',
       }));
       setUserInfo(data);
     } catch (error) {

@@ -1,10 +1,8 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Result from './components/Result';
 import styled from 'styled-components';
-import Result2 from './components/Result2';
 
 function App() {
   const [userInfo, setUserInfo] = useState({ data: null, status: 'idle' });
@@ -17,7 +15,7 @@ function App() {
     <Root>
       <Header />
       <SearchBar setUserInfo={setUserInfo} />
-      <Result2 userInfo={userInfo} setUserInfo={setUserInfo} />
+      <Result userInfo={userInfo} setUserInfo={setUserInfo} />
     </Root>
   );
 }
