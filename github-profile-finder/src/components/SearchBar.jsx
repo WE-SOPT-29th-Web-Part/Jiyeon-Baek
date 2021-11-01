@@ -34,7 +34,6 @@ const SearchBar = ({ setUserInfo }) => {
         data,
         status: 'resolved',
       }));
-      setUserInfo(data);
     } catch (error) {
       setUserInfo((currentUserInfo) => ({
         ...currentUserInfo,
