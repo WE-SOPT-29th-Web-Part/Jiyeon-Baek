@@ -1,0 +1,31 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { client } from "../../libs/api";
+import ArticleCard from "./ArticleCard";
+
+const ArticlesContainer = () => {
+  const [articleData, setArticleData] = useState([]);
+
+  // axios + async / await 로 데이터 받기
+  const getArticleData = async () => {
+    const { data } = await client.get("/article");
+    setArticleData(data);
+  };
+
+  // 다회 통신 -> axios.create
+
+  useEffect(() => {
+    getArticleData();
+  }, []);
+
+  // map
+  return (
+    <div>
+      {articleData.map((article) => (
+        <ArticleCard key={article.id} article={article} />
+      ))}
+    </div>
+  );
+};
+
+export default ArticlesContainer;
