@@ -49,7 +49,7 @@ const SearchBar = ({ setUserInfo }) => {
       let tempList;
       tempList =
         userList.length >= maxHistory
-          ? [...userList, user].slice(1, 4)
+          ? [...userList, user].slice(-3)
           : [...userList, user];
 
       setUserList(tempList);

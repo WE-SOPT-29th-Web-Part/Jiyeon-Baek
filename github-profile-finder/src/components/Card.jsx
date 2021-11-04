@@ -15,7 +15,9 @@ const Card = ({ userInfo, setUserInfo }) => {
 
   return (
     <Root>
-      <button onClick={() => setUserInfo({})}>닫기</button>
+      <button onClick={() => setUserInfo({ data: null, status: 'idle' })}>
+        닫기
+      </button>
       <img src={avatar_url} alt="프로필 이미지" />
       <h3>{name}</h3>
       <h4>{login}</h4>
