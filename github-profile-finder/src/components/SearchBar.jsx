@@ -19,6 +19,10 @@ const SearchBar = ({ setUserInfo }) => {
     // submit 하면 새로고침 되는 것을 방지
     e.preventDefault();
 
+    if (!user) {
+      return;
+    }
+
     setUserInfo((currentUserInfo) => ({
       ...currentUserInfo,
       status: 'pending', // 로딩 중
@@ -61,7 +65,7 @@ const SearchBar = ({ setUserInfo }) => {
 
   useEffect(() => {
     // localStorage를 이용
-    const storageList = JSON.parse(localStorage.getItem('userList'));
+    const storageList = JSON.parse(localStorage.getItem('userList')) ?? [];
     setUserList(storageList);
   }, []);
 
