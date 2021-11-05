@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import History from './History';
 
-const SearchBar = ({ setUserInfo }) => {
+const SearchBar = ({ getUserInfo }) => {
   const [user, setUser] = useState('');
   const [userList, setUserList] = useState([]);
   const maxHistory = 3;
@@ -14,38 +13,13 @@ const SearchBar = ({ setUserInfo }) => {
 
   // 값을 submit 했을 때, 검색이 되도록.
   // input 태그를 form 태그로 감싸고, onSubmit 이벤트를 사용
-
   const handleSubmit = async (e) => {
     // submit 하면 새로고침 되는 것을 방지
     e.preventDefault();
 
-    if (!user) {
-      return;
-    }
+    if (!user) return;
 
-    setUserInfo((currentUserInfo) => ({
-      ...currentUserInfo,
-      status: 'pending', // 로딩 중
-    }));
-
-    // user 값을 이용하여 서버에 있는 데이터 받아오기
-    // 서버 통신에 시간 소요 -> 비동기 처리 (async, await)
-    // axios는 서버 통신을 돕는 툴
-    try {
-      const { data } = await axios.get(`https://api.github.com/users/${user}`);
-      setUserInfo((currentUserInfo) => ({
-        ...currentUserInfo,
-        data,
-        status: 'resolved',
-      }));
-    } catch (error) {
-      setUserInfo((currentUserInfo) => ({
-        ...currentUserInfo,
-        data: null,
-        status: 'rejected',
-      }));
-      console.log(error);
-    }
+    getUserInfo(user);
 
     // 배열 속에 user가 있는지 확인하고 없으면 추가
     if (!userList.includes(user)) {
@@ -55,7 +29,6 @@ const SearchBar = ({ setUserInfo }) => {
         userList.length >= maxHistory
           ? [...userList, user].slice(-3)
           : [...userList, user];
-
       setUserList(tempList);
       localStorage.setItem('userList', JSON.stringify(tempList));
     }
@@ -82,7 +55,7 @@ const SearchBar = ({ setUserInfo }) => {
       <History
         userList={userList}
         setUserList={setUserList}
-        setUserInfo={setUserInfo}
+        getUserInfo={getUserInfo}
       />
     </>
   );

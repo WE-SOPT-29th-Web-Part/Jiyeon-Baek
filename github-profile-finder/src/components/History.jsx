@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const History = ({ userList, setUserList }) => {
+const History = ({ userList, setUserList, getUserInfo }) => {
+  const showProfile = (user) => {
+    getUserInfo(user);
+  };
+
   const deleteHistory = (user) => {
     // user가 아닌 element만 모아서 새로운 배열 반환
     const filteredList = userList.filter((element) => element !== user);
@@ -14,7 +18,7 @@ const History = ({ userList, setUserList }) => {
       {userList &&
         userList.map((user) => (
           <li key={user}>
-            <span>{user}</span>
+            <span onClick={() => showProfile(user)}>{user}</span>
             <button onClick={() => deleteHistory(user)}>X</button>
           </li>
         ))}
@@ -36,6 +40,13 @@ const UserList = styled.ul`
     background-color: rgb(44, 48, 53);
     border-radius: 10px;
     margin-top: 3px;
+  }
+
+  span {
+    cursor: pointer;
+    word-break: break-all;
+    line-height: 1.3;
+    margin-right: 5px;
   }
 
   button {
