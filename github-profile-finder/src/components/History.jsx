@@ -45,4 +45,8 @@ const UserList = styled.ul`
     background-color: transparent;
     cursor: pointer;
   }
+
+  button:hover {
+    color: gold;
+  }
 `;

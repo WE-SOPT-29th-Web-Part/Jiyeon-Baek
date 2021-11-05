@@ -84,6 +84,10 @@ const Root = styled.article`
     cursor: pointer;
   }
 
+  & > button:hover {
+    color: gold;
+  }
+
   & > img {
     width: 200px;
     height: 200px;
