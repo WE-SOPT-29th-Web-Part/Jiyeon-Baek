@@ -60,14 +60,12 @@ const countCheckbox = () => {
 const onAdd = (index) => {
   if (!inputs[index].value) return;
 
-  const div = document.createElement("div");
   const checkbox = document.createElement("input");
   const label = document.createElement("label");
   const li = document.createElement("li");
   const span = document.createElement("span");
   const deleteBtn = document.createElement("button");
 
-  div.setAttribute("class", "todos__item--left");
   checkbox.setAttribute("class", "todos__check");
   checkbox.setAttribute("type", "checkbox");
   checkbox.setAttribute("id", "check" + i);
@@ -79,10 +77,9 @@ const onAdd = (index) => {
   span.innerText = inputs[index].value;
 
   allItems[index].appendChild(li);
-  div.appendChild(checkbox);
-  div.appendChild(label);
-  div.appendChild(span);
-  li.appendChild(div);
+  li.appendChild(checkbox);
+  li.appendChild(label);
+  li.appendChild(span);
   li.appendChild(deleteBtn);
 
   i++;
