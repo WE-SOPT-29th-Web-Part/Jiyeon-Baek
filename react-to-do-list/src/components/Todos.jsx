@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import blank from '../assets/images/blank.png';
+import checkbox from '../assets/images/checkbox.png';
+import deleteBtn from '../assets/images/delete.png';
 
 const Todos = ({ dateType }) => {
   const [todo, setTodo] = useState('');
@@ -9,10 +12,18 @@ const Todos = ({ dateType }) => {
     setTodo(e.target.value);
   };
 
-  const handleClick = () => {
-    if (!todo) return;
+  const addList = () => {
     setItemSet((itemSet) => new Set([...itemSet, todo]));
     setTodo('');
+  };
+
+  const keyPress = (e) => {
+    if (e.keyCode === 13) addList();
+  };
+
+  const handleClick = () => {
+    if (!todo) return;
+    addList();
   };
 
   const findDate = () => {
@@ -57,6 +68,7 @@ const Todos = ({ dateType }) => {
         type="text"
         value={todo}
         onChange={handleChange}
+        onKeyDown={keyPress}
         placeholder={`${dateType} 할 일을 작성해 주세요.`}
       />
       <StyledBtnWrapper>
@@ -121,14 +133,13 @@ const StyledToDoList = styled.ul`
         margin-right: 1rem;
         width: 1.2rem;
         height: 1.2rem;
-        /* background: url('../assets/images/blank.png') center center/100%
-          no-repeat; */
+        background: url(${blank}) center center/100% no-repeat;
         transition: background-image 300ms ease;
       }
 
-      /* & > input:checked + label {
-        background-image: url('../assets/images/checkbox.png');
-      } */
+      & > input:checked + label {
+        background-image: url(${checkbox});
+      }
 
       & > span {
         font-size: 1.2rem;
@@ -139,8 +150,7 @@ const StyledToDoList = styled.ul`
     button {
       width: 1.2rem;
       height: 1.2rem;
-      /* background: transparent url('../assets/images/delete.png') center
-        center/100% no-repeat; */
+      background: transparent url(${deleteBtn}) center center/100% no-repeat;
     }
   }
 `;
@@ -171,8 +181,6 @@ const StyledBtnWrapper = styled.div`
     line-height: 2rem;
     height: 2rem;
     width: 2rem;
-    border: none;
-    outline: none;
   }
 
   & > button:hover {
