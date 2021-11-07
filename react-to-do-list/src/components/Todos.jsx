@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import blank from '../assets/images/blank.png';
 import checkbox from '../assets/images/checkbox.png';
@@ -7,6 +7,8 @@ import deleteBtn from '../assets/images/delete.png';
 const Todos = ({ dateType }) => {
   const [todo, setTodo] = useState('');
   const [itemSet, setItemSet] = useState(new Set());
+  const [checkedInputs, setCheckedInputs] = useState([]);
+  const total = itemSet.size;
 
   const handleChange = (e) => {
     setTodo(e.target.value);
@@ -26,9 +28,21 @@ const Todos = ({ dateType }) => {
     addList();
   };
 
+  const handleCheck = (e) => {
+    const isChecked = e.target.checked;
+    const id = e.target.id;
+    if (isChecked) {
+      setCheckedInputs([...checkedInputs, id]);
+      return;
+    }
+    setCheckedInputs(checkedInputs.filter((input) => input !== id));
+  };
+
   const handleClickDeleteBtn = (e) => {
-    const id = e.target.closest('li').id;
-    setItemSet(new Set([...itemSet].filter((item) => item !== id)));
+    const itemId = e.target.closest('li').id;
+    const inputId = dateType + itemId;
+    setItemSet(new Set([...itemSet].filter((item) => item !== itemId)));
+    setCheckedInputs(checkedInputs.filter((input) => input !== inputId));
   };
 
   const findDate = () => {
@@ -49,22 +63,28 @@ const Todos = ({ dateType }) => {
     return when;
   };
 
+  useEffect(() => {}, [total]);
+
   return (
     <StyledSection>
       <StyledTodosInfo>
         <span>{findDate()}</span>
-        <span>Check : 0 / 0</span>
+        <span>
+          Check : {checkedInputs.length} / {total}
+        </span>
       </StyledTodosInfo>
       <h2>{dateType} 할 일</h2>
       <StyledToDoList>
         {itemSet &&
           [...itemSet].map((item) => (
             <li key={item} id={item}>
-              <div>
-                <input type="checkbox" id={dateType + item} />
-                <label htmlFor={dateType + item}></label>
-                <span>{item}</span>
-              </div>
+              <input
+                type="checkbox"
+                id={dateType + item}
+                onChange={handleCheck}
+              />
+              <label htmlFor={dateType + item}></label>
+              <span>{item}</span>
               <button onClick={handleClickDeleteBtn}></button>
             </li>
           ))}
@@ -125,31 +145,27 @@ const StyledToDoList = styled.ul`
     align-items: center;
     border-bottom: 1px solid lightgray;
 
-    & > div {
-      display: flex;
-      align-items: center;
+    & > input {
+      display: none;
+    }
 
-      & > input {
-        display: none;
-      }
+    & > input + label {
+      cursor: pointer;
+      margin-right: 1rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background: url(${blank}) center center/100% no-repeat;
+      transition: background-image 300ms ease;
+    }
 
-      & > input + label {
-        cursor: pointer;
-        margin-right: 1rem;
-        width: 1.2rem;
-        height: 1.2rem;
-        background: url(${blank}) center center/100% no-repeat;
-        transition: background-image 300ms ease;
-      }
+    & > input:checked + label {
+      background-image: url(${checkbox});
+    }
 
-      & > input:checked + label {
-        background-image: url(${checkbox});
-      }
-
-      & > span {
-        font-size: 1.2rem;
-        line-height: 2.4rem;
-      }
+    & > span {
+      font-size: 1.2rem;
+      line-height: 2.4rem;
+      flex-grow: 1;
     }
 
     button {
