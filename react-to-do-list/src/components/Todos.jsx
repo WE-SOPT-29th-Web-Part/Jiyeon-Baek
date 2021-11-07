@@ -13,17 +13,22 @@ const Todos = ({ dateType }) => {
   };
 
   const addList = () => {
+    if (!todo) return;
     setItemSet((itemSet) => new Set([...itemSet, todo]));
     setTodo('');
   };
 
-  const keyPress = (e) => {
+  const handleKeyPress = (e) => {
     if (e.keyCode === 13) addList();
   };
 
-  const handleClick = () => {
-    if (!todo) return;
+  const handleClickPlusBtn = () => {
     addList();
+  };
+
+  const handleClickDeleteBtn = (e) => {
+    const id = e.target.closest('li').id;
+    setItemSet(new Set([...itemSet].filter((item) => item !== id)));
   };
 
   const findDate = () => {
@@ -54,13 +59,13 @@ const Todos = ({ dateType }) => {
       <StyledToDoList>
         {itemSet &&
           [...itemSet].map((item) => (
-            <li key={item}>
+            <li key={item} id={item}>
               <div>
-                <input type="checkbox" id={item} />
-                <label htmlFor={item}></label>
+                <input type="checkbox" id={dateType + item} />
+                <label htmlFor={dateType + item}></label>
                 <span>{item}</span>
               </div>
-              <button className="todos__delete"></button>
+              <button onClick={handleClickDeleteBtn}></button>
             </li>
           ))}
       </StyledToDoList>
@@ -68,11 +73,11 @@ const Todos = ({ dateType }) => {
         type="text"
         value={todo}
         onChange={handleChange}
-        onKeyDown={keyPress}
+        onKeyDown={handleKeyPress}
         placeholder={`${dateType} 할 일을 작성해 주세요.`}
       />
       <StyledBtnWrapper>
-        <button onClick={handleClick}>+</button>
+        <button onClick={handleClickPlusBtn}>+</button>
       </StyledBtnWrapper>
     </StyledSection>
   );
