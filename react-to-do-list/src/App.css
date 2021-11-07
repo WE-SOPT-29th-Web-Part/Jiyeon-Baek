@@ -1,16 +1,16 @@
-@import "reset-css";
+@import 'reset-css';
 
 @font-face {
-  font-family: "NanumBarunpen";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff")
-    format("woff");
+  font-family: 'NanumBarunpen';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 * {
   box-sizing: border-box;
-  font-family: "NanumBarunpen" !important;
+  font-family: 'NanumBarunpen' !important;
 }
 
 html,
@@ -27,4 +27,6 @@ body {
 
 button {
   cursor: pointer;
+  border: none;
+  outline: none;
 }

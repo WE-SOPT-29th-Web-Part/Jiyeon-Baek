@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Navigation = () => {
   return (
@@ -19,7 +19,6 @@ const StyledNav = styled.nav`
 
   button {
     background-color: lavender;
-    border: 0;
     border-radius: 10px;
     padding: 2px 10px;
     margin: 0 8px;
