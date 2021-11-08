@@ -110,8 +110,10 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 0%;
+  width: 0;
   visibility: hidden;
+  overflow-x: hidden;
+  transition: width 300ms ease;
 
   & > h2 {
     margin-block-start: 0;
