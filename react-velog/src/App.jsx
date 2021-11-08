@@ -1,6 +1,7 @@
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import Write from "./pages/Write";
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import Write from './pages/Write';
+import './App.css';
 
 function App() {
   return (
