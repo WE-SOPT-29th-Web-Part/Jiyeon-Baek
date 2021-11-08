@@ -26,7 +26,7 @@ const StyledCard = styled.div`
   padding: 4rem 0;
   line-height: 1.5;
   border-bottom: 1px solid rgb(233, 236, 239);
-  width: 768px;
+  width: 70%;
   margin: 0 auto;
 
   & > img {

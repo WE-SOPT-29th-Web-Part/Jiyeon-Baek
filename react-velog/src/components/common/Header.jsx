@@ -47,4 +47,9 @@ const StyledRight = styled.div`
     border: 1px solid black;
     padding: 5px 10px;
   }
+
+  & button:hover {
+    background-color: black;
+    color: white;
+  }
 `;
