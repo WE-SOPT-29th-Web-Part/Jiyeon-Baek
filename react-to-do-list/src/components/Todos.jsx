@@ -4,7 +4,7 @@ import blank from '../assets/icons/blank.png';
 import checkbox from '../assets/icons/checkbox.png';
 import deleteBtn from '../assets/icons/delete.png';
 
-const Todos = ({ dateType }) => {
+const Todos = ({ dateType, viewType }) => {
   const [todo, setTodo] = useState('');
   const [itemSet, setItemSet] = useState(new Set());
   const [checkedInputs, setCheckedInputs] = useState([]);
@@ -66,7 +66,7 @@ const Todos = ({ dateType }) => {
   useEffect(() => {}, [total]);
 
   return (
-    <StyledSection>
+    <StyledSection className={viewType}>
       <StyledTodosInfo>
         <span>{findDate()}</span>
         <span>
@@ -110,13 +110,19 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 0%;
+  visibility: hidden;
 
   & > h2 {
     margin-block-start: 0;
     margin-block-end: 0;
     font-size: 20px;
     font-weight: bold;
+  }
+
+  &.open {
+    width: 100%;
+    visibility: visible;
   }
 `;
 
