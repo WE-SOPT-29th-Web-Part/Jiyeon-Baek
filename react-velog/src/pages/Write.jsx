@@ -4,6 +4,7 @@ import ArticleTags from '../components/write/ArticleTags';
 import ArticleBody from '../components/write/ArticleBody';
 import ArticleFooter from '../components/write/ArticleFooter';
 import { client } from '../libs/api';
+import styled from 'styled-components';
 
 const Write = () => {
   // 필요한 데이터를 입력과 동시에 받아오고 (state로 관리)
@@ -40,8 +41,7 @@ const Write = () => {
   };
 
   return (
-    <div>
-      <button onClick={handlePost}>POST</button>
+    <StyledWritePage>
       <ArticleTitle setArticleData={setArticleData} />
       <ArticleTags
         tags={articleData.tags}
@@ -50,8 +50,16 @@ const Write = () => {
       />
       <ArticleBody setArticleData={setArticleData} />
       <ArticleFooter />
-    </div>
+      <button onClick={handlePost}>POST</button>
+    </StyledWritePage>
   );
 };
 
 export default Write;
+
+const StyledWritePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 2rem;
+`;
