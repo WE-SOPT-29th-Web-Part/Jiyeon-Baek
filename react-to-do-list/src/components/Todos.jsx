@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import blank from '../assets/images/blank.png';
-import checkbox from '../assets/images/checkbox.png';
-import deleteBtn from '../assets/images/delete.png';
+import blank from '../assets/icons/blank.png';
+import checkbox from '../assets/icons/checkbox.png';
+import deleteBtn from '../assets/icons/delete.png';
 
 const Todos = ({ dateType }) => {
   const [todo, setTodo] = useState('');
