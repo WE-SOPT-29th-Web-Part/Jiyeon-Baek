@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const ArticleBody = ({ setArticleData }) => {
   const handleChange = (e) => {
     setArticleData((articleData) => ({
       ...articleData,
-      title: e.target.value,
+      body: e.target.value,
     }));
   };
   return <textarea onChange={handleChange}></textarea>;

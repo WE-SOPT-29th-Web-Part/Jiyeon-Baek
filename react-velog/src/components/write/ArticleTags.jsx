@@ -1,14 +1,15 @@
-import React from "react";
+import React from 'react';
 
 const ArticleTags = ({ tags, articleData, setArticleData }) => {
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       // input 내용 -> tag로 추가
+      // 불변성 유지를 위해 아래처럼 작성
       const tempData = { ...articleData };
       tempData.tags = [...tempData.tags, e.target.value];
       setArticleData(tempData);
 
-      e.target.value = "";
+      e.target.value = '';
     }
   };
   return (

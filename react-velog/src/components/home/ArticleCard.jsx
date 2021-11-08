@@ -1,7 +1,6 @@
-import React from "react";
+import React from 'react';
 
 const ArticleCard = ({ article }) => {
-  console.log(article);
   const { id, title, body, summary, series, tags, thumbnail, date } = article;
   return (
     <div>
