@@ -66,9 +66,17 @@ const StyledFooter = styled.div`
     color: rgb(73, 80, 87);
   }
 
+  & > div > button:first-child:hover {
+    background: rgb(241, 243, 245);
+  }
+
   & > div > button:last-child {
     background: rgb(18, 184, 134);
     color: white;
     margin-right: 2rem;
+  }
+
+  & > div > button:last-child:hover {
+    background: rgb(32, 201, 151);
   }
 `;
