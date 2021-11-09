@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
+import { useHistory } from 'react-router-dom';
 
 const ArticleFooter = ({ handlePost }) => {
+  const history = useHistory();
+
   return (
     <StyledFooter>
-      <button>
+      <button onClick={() => history.goBack()}>
         <ArrowIcon />
         <span>나가기</span>
       </button>
