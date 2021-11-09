@@ -49,8 +49,7 @@ const Write = () => {
         setArticleData={setArticleData}
       />
       <ArticleBody setArticleData={setArticleData} />
-      <ArticleFooter />
-      <button onClick={handlePost}>POST</button>
+      <ArticleFooter handlePost={handlePost} />
     </StyledWritePage>
   );
 };
