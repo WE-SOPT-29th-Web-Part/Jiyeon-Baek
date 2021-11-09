@@ -23,10 +23,9 @@ export default ArticleCard;
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 4rem 0;
+  padding-bottom: 4rem;
   line-height: 1.5;
   border-bottom: 1px solid rgb(233, 236, 239);
-  width: 70%;
   margin: 0 auto;
 
   & > img {

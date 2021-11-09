@@ -19,8 +19,10 @@ export default Profile;
 const StyledProfile = styled.div`
   display: flex;
   align-items: center;
-  width: 70%;
   margin: 0 auto;
+  border-bottom: 2px solid rgb(233, 236, 239);
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   & > img {
     border-radius: 50%;
