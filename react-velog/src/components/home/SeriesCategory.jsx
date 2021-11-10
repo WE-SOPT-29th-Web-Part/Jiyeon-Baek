@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const SeriesCategory = () => {
-  return <div>SeriesCategory</div>;
+  return <div></div>;
 };
 
 export default SeriesCategory;
