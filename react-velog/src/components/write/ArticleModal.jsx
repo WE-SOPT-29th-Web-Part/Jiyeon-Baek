@@ -60,7 +60,10 @@ const ArticleModal = ({
       <StyledModalWrapper>
         <StyledLeft>
           <h3>포스트 미리보기</h3>
-          <input type="file" />
+          <StyledImgInput>
+            <label htmlFor="thumbnail">썸네일 업로드</label>
+            <input type="file" id="thumbnail" />
+          </StyledImgInput>
           <h4>{title}</h4>
           <textarea
             onChange={handleChange}
@@ -134,10 +137,37 @@ const StyledLeft = styled.div`
     font-family: inherit;
   }
 
-  & > div {
+  & > div:last-child {
     text-align: right;
     margin-top: 0.25rem;
     font-size: 0.75rem;
+  }
+`;
+
+const StyledImgInput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(233, 236, 239);
+
+  & > label {
+    cursor: pointer;
+    margin: 1rem 0;
+    padding: 0.25rem 2rem;
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: rgb(32, 201, 151);
+    background: white;
+    &:hover {
+      background: rgb(248, 249, 250);
+    }
+  }
+
+  & > input {
+    display: none;
   }
 `;
 
