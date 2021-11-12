@@ -15,7 +15,7 @@ const Write = () => {
     body: '',
     summary: '',
     series: '',
-    tags: [],
+    tags: new Set(),
     thumbnail: '',
     date: '', // 오늘 날짜
   });
