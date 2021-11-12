@@ -7,7 +7,7 @@ const ArticleTags = ({ tags, articleData, setArticleData }) => {
       // input 내용 -> tag로 추가
       // 불변성 유지를 위해 아래처럼 작성
       const tempData = { ...articleData };
-      tempData.tags = new Set([...tempData.tags, e.target.value]);
+      tempData.tags = [...tempData.tags, e.target.value];
       setArticleData(tempData);
 
       e.target.value = '';
@@ -15,7 +15,9 @@ const ArticleTags = ({ tags, articleData, setArticleData }) => {
   };
   return (
     <StyledTag>
-      {tags && [...tags].map((tag) => <span key={tag}>{tag}</span>)}
+      {tags.map((tag) => (
+        <span key={tag}>{tag}</span>
+      ))}
       <input
         type="text"
         onKeyPress={handleKeyPress}
