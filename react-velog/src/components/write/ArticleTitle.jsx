@@ -33,6 +33,7 @@ const StyledTitle = styled.textarea`
   padding: 1rem 0;
   font-family: none;
   font-weight: 600;
+  overflow-y: hidden;
 `;
 
 const StyledBox = styled.div`
