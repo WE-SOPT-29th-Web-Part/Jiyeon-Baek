@@ -167,9 +167,15 @@ const StyledRight = styled.div`
   & > button:first-child {
     margin-right: 0.875rem;
     background: rgb(134, 142, 150);
+    &:hover {
+      background: rgb(173, 181, 189);
+    }
   }
 
   & > button:last-child {
     background: rgb(18, 184, 134);
+    &:hover {
+      background: rgb(32, 201, 151);
+    }
   }
 `;
