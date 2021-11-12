@@ -10,17 +10,28 @@ const ArticleModal = ({
   setIsModalOpen,
 }) => {
   // 150자 체크
-  const [words, setWords] = useState(0);
-
-  const history = useHistory();
-
+  const [count, setCount] = useState(0);
+  const [color, setColor] = useState('rgb(134, 142, 150)');
+  const maxLength = 150;
   const handleChange = (e) => {
+    const lengthCheckRegEx = new RegExp('^.{' + maxLength + ',}$');
+    if (lengthCheckRegEx.test(e.target.value)) {
+      e.target.value = e.target.value.substr(0, maxLength);
+    }
+    if (e.target.value.length >= maxLength) {
+      setColor('rgb(250, 82, 82)');
+    } else {
+      setColor('rgb(134, 142, 150)');
+    }
+    setCount(e.target.value.length);
+
     setArticleData((articleData) => ({
       ...articleData,
       summary: e.target.value,
     }));
   };
 
+  const history = useHistory();
   const createArticle = async () => {
     const { data } = await client.get('article');
     const id = data.length + 1;
@@ -34,7 +45,7 @@ const ArticleModal = ({
       date,
     });
 
-    // 모달 닫고 메인 화면으로 이동
+    // 모달창 닫고 메인 화면으로 이동
     setIsModalOpen(false);
     history.push('/');
   };
@@ -55,7 +66,7 @@ const ArticleModal = ({
             onChange={handleChange}
             placeholder="당신의 포스트를 짧게 소개해 보세요."
           ></textarea>
-          <div>{words}/150</div>
+          <div style={{ color }}>{count}/150</div>
         </StyledLeft>
         <StyledLine />
         <StyledRight>
@@ -127,7 +138,6 @@ const StyledLeft = styled.div`
     text-align: right;
     margin-top: 0.25rem;
     font-size: 0.75rem;
-    color: rgb(134, 142, 150);
   }
 `;
 
