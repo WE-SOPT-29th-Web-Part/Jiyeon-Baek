@@ -21,7 +21,7 @@ const Todos = ({ dateType, viewType }) => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.keyCode === 13) addList();
+    if (e.key === 'Enter') addList();
   };
 
   const handleClickPlusBtn = () => {
@@ -93,7 +93,7 @@ const Todos = ({ dateType, viewType }) => {
         type="text"
         value={todo}
         onChange={handleChange}
-        onKeyDown={handleKeyPress}
+        onKeyUp={handleKeyPress}
         placeholder={`${dateType} 할 일을 작성해 주세요.`}
       />
       <StyledBtnWrapper>
