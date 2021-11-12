@@ -5,7 +5,7 @@ const ArticleCard = ({ article }) => {
   const { title, summary, tags, thumbnail, date } = article;
   return (
     <StyledCard>
-      <img src={thumbnail} alt="" />
+      {thumbnail && <img src={thumbnail} alt="thumbnail" />}
       <h3>{title}</h3>
       <h4>{summary}</h4>
       <StyledTag>
