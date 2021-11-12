@@ -18,11 +18,9 @@ const ArticleModal = ({
     if (lengthCheckRegEx.test(e.target.value)) {
       e.target.value = e.target.value.substr(0, maxLength);
     }
-    if (e.target.value.length >= maxLength) {
-      setColor('rgb(250, 82, 82)');
-    } else {
-      setColor('rgb(134, 142, 150)');
-    }
+    e.target.value.length >= maxLength
+      ? setColor('rgb(250, 82, 82)')
+      : setColor('rgb(134, 142, 150)');
     setCount(e.target.value.length);
 
     setArticleData((articleData) => ({
