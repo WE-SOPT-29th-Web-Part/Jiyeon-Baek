@@ -29,6 +29,7 @@ const StyledTitle = styled.textarea`
   outline: 0;
   border: 0;
   resize: none;
+  margin-top: 2%;
   padding: 1rem 0;
   font-family: none;
   font-weight: 600;
