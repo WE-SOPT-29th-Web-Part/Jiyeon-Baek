@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ArticleCard = ({ article }) => {
-  const { id, title, body, summary, series, tags, thumbnail, date } = article;
+  const { title, summary, tags, thumbnail, date } = article;
   return (
     <StyledCard>
       <img src={thumbnail} alt="" />
