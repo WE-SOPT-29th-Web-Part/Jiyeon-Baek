@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
 import { useHistory } from 'react-router-dom';
 
-const ArticleFooter = ({ handlePost }) => {
+const ArticleFooter = ({ setIsModalOpen }) => {
   const history = useHistory();
 
   return (
@@ -14,7 +14,7 @@ const ArticleFooter = ({ handlePost }) => {
       </button>
       <div>
         <button>임시저장</button>
-        <button onClick={handlePost}>출간하기</button>
+        <button onClick={() => setIsModalOpen(true)}>출간하기</button>
       </div>
     </StyledFooter>
   );

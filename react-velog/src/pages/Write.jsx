@@ -3,7 +3,7 @@ import ArticleTitle from '../components/write/ArticleTitle';
 import ArticleTags from '../components/write/ArticleTags';
 import ArticleBody from '../components/write/ArticleBody';
 import ArticleFooter from '../components/write/ArticleFooter';
-import { client } from '../libs/api';
+import ArticleModal from '../components/write/ArticleModal';
 import styled from 'styled-components';
 
 const Write = () => {
@@ -20,25 +20,7 @@ const Write = () => {
     date: '', // 오늘 날짜
   });
 
-  const createArticle = async () => {
-    const { data } = await client.get('article');
-    const id = data.length + 1;
-    const now = new Date();
-    const date = `${now.getFullYear()}년 ${
-      now.getMonth() + 1
-    }월 ${now.getDate()}일`;
-
-    await client.post('/article', {
-      ...articleData,
-      id,
-      date,
-      summary: '요약입니다.',
-    });
-  };
-
-  const handlePost = async () => {
-    await createArticle();
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <StyledWritePage>
@@ -49,7 +31,15 @@ const Write = () => {
         setArticleData={setArticleData}
       />
       <ArticleBody setArticleData={setArticleData} />
-      <ArticleFooter handlePost={handlePost} />
+      <ArticleFooter setIsModalOpen={setIsModalOpen} />
+      {isModalOpen && (
+        <ArticleModal
+          title={articleData.title}
+          articleData={articleData}
+          setArticleData={setArticleData}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </StyledWritePage>
   );
 };
@@ -60,5 +50,4 @@ const StyledWritePage = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin-bottom: 2rem;
 `;
