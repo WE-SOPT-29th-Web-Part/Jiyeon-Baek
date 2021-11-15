@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReactComponent as VelogIcon } from '../../assets/icons/velog.svg';
-import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
-import { ReactComponent as MoreIcon } from '../../assets/icons/more.svg';
-import profileImg from '../../assets/images/profile.png';
+import { ReactComponent as VelogIcon } from 'assets/icons/velog.svg';
+import { ReactComponent as SearchIcon } from 'assets/icons/search.svg';
+import { ReactComponent as MoreIcon } from 'assets/icons/more.svg';
+import profileImg from 'assets/images/profile.png';
 
 const Header = () => {
   return (

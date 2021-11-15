@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ArticleTitle from '../components/write/ArticleTitle';
-import ArticleTags from '../components/write/ArticleTags';
-import ArticleBody from '../components/write/ArticleBody';
-import ArticleFooter from '../components/write/ArticleFooter';
-import ArticleModal from '../components/write/ArticleModal';
+import ArticleTitle from 'components/write/ArticleTitle';
+import ArticleTags from 'components/write/ArticleTags';
+import ArticleBody from 'components/write/ArticleBody';
+import ArticleFooter from 'components/write/ArticleFooter';
+import ArticleModal from 'components/write/ArticleModal';
 import styled from 'styled-components';
 
 const Write = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { client } from '../../libs/api';
+import { client } from 'libs/api';
 import { useHistory } from 'react-router-dom';
 
 const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { client } from '../../libs/api';
+import { client } from 'libs/api';
 import ArticleCard from './ArticleCard';
 
 const ArticlesContainer = () => {

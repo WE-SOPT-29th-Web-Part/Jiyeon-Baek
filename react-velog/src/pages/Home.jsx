@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from '../components/common/Header';
-import Profile from '../components/home/Profile';
-import HomeNav from '../components/home/HomeNav';
-import ArticlesContainer from '../components/home/ArticlesContainer';
-import SeriesCategory from '../components/home/SeriesCategory';
+import Header from 'components/common/Header';
+import Profile from 'components/home/Profile';
+import HomeNav from 'components/home/HomeNav';
+import ArticlesContainer from 'components/home/ArticlesContainer';
+import SeriesCategory from 'components/home/SeriesCategory';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 

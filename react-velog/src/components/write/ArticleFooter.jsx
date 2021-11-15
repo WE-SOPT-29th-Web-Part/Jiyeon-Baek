@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
+import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import { useHistory } from 'react-router-dom';
 
 const ArticleFooter = ({ setIsModalOpen }) => {
