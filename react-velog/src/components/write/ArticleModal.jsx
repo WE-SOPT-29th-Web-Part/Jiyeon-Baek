@@ -9,18 +9,20 @@ const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
   const [color, setColor] = useState('rgb(134, 142, 150)');
   const maxLength = 150;
   const handleChange = (e) => {
+    const previewContent = e.target.value;
     const lengthCheckRegEx = new RegExp('^.{' + maxLength + ',}$');
-    if (lengthCheckRegEx.test(e.target.value)) {
-      e.target.value = e.target.value.substr(0, maxLength);
+    if (lengthCheckRegEx.test(previewContent)) {
+      e.target.value = previewContent.substr(0, maxLength);
     }
-    e.target.value.length >= maxLength
+    setCount(e.target.value.length);
+
+    previewContent.length >= maxLength
       ? setColor('rgb(250, 82, 82)')
       : setColor('rgb(134, 142, 150)');
-    setCount(e.target.value.length);
 
     setArticleData((articleData) => ({
       ...articleData,
-      summary: e.target.value,
+      summary: previewContent,
     }));
   };
 
