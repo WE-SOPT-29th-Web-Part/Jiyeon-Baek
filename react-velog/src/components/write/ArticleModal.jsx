@@ -3,12 +3,7 @@ import styled from 'styled-components';
 import { client } from '../../libs/api';
 import { useHistory } from 'react-router-dom';
 
-const ArticleModal = ({
-  title,
-  articleData,
-  setArticleData,
-  setIsModalOpen,
-}) => {
+const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
   // 150자 체크
   const [count, setCount] = useState(0);
   const [color, setColor] = useState('rgb(134, 142, 150)');
@@ -62,7 +57,7 @@ const ArticleModal = ({
             <label htmlFor="thumbnail">썸네일 업로드</label>
             <input type="file" id="thumbnail" />
           </StyledImgInput>
-          <h4>{title}</h4>
+          <h4>{articleData.title}</h4>
           <textarea
             onChange={handleChange}
             placeholder="당신의 포스트를 짧게 소개해 보세요."

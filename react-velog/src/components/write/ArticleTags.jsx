@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ArticleTags = ({ tags, articleData, setArticleData }) => {
+const ArticleTags = ({ articleData, setArticleData }) => {
+  const tags = articleData.tags;
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       // input 내용 -> tag로 추가

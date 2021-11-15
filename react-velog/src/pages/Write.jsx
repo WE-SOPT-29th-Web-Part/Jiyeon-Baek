@@ -25,16 +25,11 @@ const Write = () => {
   return (
     <StyledWritePage>
       <ArticleTitle setArticleData={setArticleData} />
-      <ArticleTags
-        tags={articleData.tags}
-        articleData={articleData}
-        setArticleData={setArticleData}
-      />
+      <ArticleTags articleData={articleData} setArticleData={setArticleData} />
       <ArticleBody setArticleData={setArticleData} />
       <ArticleFooter setIsModalOpen={setIsModalOpen} />
       {isModalOpen && (
         <ArticleModal
-          title={articleData.title}
           articleData={articleData}
           setArticleData={setArticleData}
           setIsModalOpen={setIsModalOpen}
