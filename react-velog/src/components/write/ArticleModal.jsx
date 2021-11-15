@@ -37,14 +37,9 @@ const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
       id,
       date,
     });
-
     // 모달창 닫고 메인 화면으로 이동
     setIsModalOpen(false);
     history.push('/');
-  };
-
-  const handlePost = async () => {
-    await createArticle();
   };
 
   return (
@@ -67,7 +62,7 @@ const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
         <StyledLine />
         <StyledRight>
           <button onClick={() => setIsModalOpen(false)}>취소</button>
-          <button onClick={handlePost}>출간하기</button>
+          <button onClick={createArticle}>출간하기</button>
         </StyledRight>
       </StyledModalWrapper>
     </>
