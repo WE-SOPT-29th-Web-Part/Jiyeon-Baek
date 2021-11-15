@@ -8,6 +8,7 @@ const Todos = ({ dateType, viewType }) => {
   const [todo, setTodo] = useState('');
   const [itemSet, setItemSet] = useState(new Set());
   const [checkedInputs, setCheckedInputs] = useState([]);
+  const [dateStr, setDateStr] = useState('');
   const total = itemSet.size;
 
   const handleChange = (e) => {
@@ -65,10 +66,15 @@ const Todos = ({ dateType, viewType }) => {
 
   useEffect(() => {}, [total]);
 
+  useEffect(() => {
+    setDateStr(findDate());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <StyledSection className={viewType}>
       <StyledTodosInfo>
-        <span>{findDate()}</span>
+        <span>{dateStr}</span>
         <span>
           Check : {checkedInputs.length} / {total}
         </span>
