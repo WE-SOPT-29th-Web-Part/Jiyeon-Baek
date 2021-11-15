@@ -22,7 +22,7 @@ const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
 
     setArticleData((articleData) => ({
       ...articleData,
-      summary: previewContent,
+      summary: e.target.value,
     }));
   };
 
