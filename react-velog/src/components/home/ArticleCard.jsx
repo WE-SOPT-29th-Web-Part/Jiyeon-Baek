@@ -23,7 +23,8 @@ export default ArticleCard;
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   line-height: 1.5;
   border-bottom: 1px solid rgb(233, 236, 239);
   margin: 0 auto;
@@ -31,12 +32,12 @@ const StyledCard = styled.div`
   & > img {
     object-fit: cover;
     height: 20rem;
+    margin-bottom: 1rem;
   }
 
   & > h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-top: 1rem;
     color: rgb(33, 37, 41);
     word-break: keep-all;
   }

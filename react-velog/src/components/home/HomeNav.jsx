@@ -33,8 +33,8 @@ const HomeNav = () => {
 export default HomeNav;
 
 const StyledNav = styled.div`
-  margin-top: 4.5rem;
-  margin-bottom: 4.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
   display: flex;
   justify-content: center;
 
