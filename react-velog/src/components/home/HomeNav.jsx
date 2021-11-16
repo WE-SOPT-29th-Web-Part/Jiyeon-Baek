@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const HomeNav = () => {
   const [line, setLine] = useState(true);
+  const location = useLocation();
 
   const handleClick = (e) => {
     switch (e.target.id) {
@@ -17,6 +18,19 @@ const HomeNav = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/':
+        setLine(true);
+        break;
+      case '/series':
+        setLine(false);
+        break;
+      default:
+        break;
+    }
+  }, [location]);
 
   return (
     <StyledNav line={line}>
