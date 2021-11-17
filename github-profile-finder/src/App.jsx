@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Result from './components/Result';
@@ -34,14 +34,14 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    console.log(`userInfo: `, userInfo);
-  }, [userInfo]);
+  // useEffect(() => {
+  //   console.log(`userInfo: `, userInfo);
+  // }, [userInfo]);
 
   return (
     <Root>
       <Header />
-      <SearchBar setUserInfo={setUserInfo} getUserInfo={getUserInfo} />
+      <SearchBar getUserInfo={getUserInfo} />
       <Result userInfo={userInfo} setUserInfo={setUserInfo} />
     </Root>
   );
