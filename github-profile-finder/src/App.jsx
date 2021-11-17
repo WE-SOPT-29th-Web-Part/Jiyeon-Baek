@@ -34,10 +34,6 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(`userInfo: `, userInfo);
-  // }, [userInfo]);
-
   return (
     <Root>
       <Header />
