@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { client } from 'libs/api';
-import { useNavigate } from 'react-router-dom';
+import { imageClient } from 'libs/api';
 
-const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
+const ArticleModal = ({
+  articleData,
+  setIsModalOpen,
+  onDataChange,
+  createArticle,
+}) => {
   // 150자 체크
   const [count, setCount] = useState(0);
   const [color, setColor] = useState('rgb(134, 142, 150)');
@@ -20,28 +24,17 @@ const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
       ? setColor('rgb(250, 82, 82)')
       : setColor('rgb(134, 142, 150)');
 
-    setArticleData((articleData) => ({
-      ...articleData,
-      summary: e.target.value,
-    }));
+    onDataChange('summary', e.target.value);
   };
 
-  const navigate = useNavigate();
-  const createArticle = async () => {
-    const { data } = await client.get('article');
-    const id = data.length + 1;
-    const now = new Date();
-    const date = `${now.getFullYear()}년 ${
-      now.getMonth() + 1
-    }월 ${now.getDate()}일`;
-    await client.post('/article', {
-      ...articleData,
-      id,
-      date,
-    });
-    // 모달창 닫고 메인 화면으로 이동
-    setIsModalOpen(false);
-    navigate('/');
+  const handleImageChange = async (e) => {
+    // 서버에 이미지 보내고(post), 정제된 이미지 url 받아오기(get)
+    const formData = new FormData();
+    const imageFile = e.target.files[0];
+    formData.append('file', imageFile);
+    const imageResponse = await imageClient.post('', formData); // baseURL 수정할 게 없으니까 비워둠
+    const imageUrl = imageResponse.data.url; // 이 url을 articleData의 thumbnail에 넣어서 post
+    onDataChange('thumbnail', imageUrl);
   };
 
   return (
@@ -52,10 +45,11 @@ const ArticleModal = ({ articleData, setArticleData, setIsModalOpen }) => {
           <h3>포스트 미리보기</h3>
           <StyledImgInput>
             <label htmlFor="thumbnail">썸네일 업로드</label>
-            <input type="file" id="thumbnail" />
+            <input type="file" id="thumbnail" onChange={handleImageChange} />
           </StyledImgInput>
           <h4>{articleData.title}</h4>
           <textarea
+            value={articleData.summary}
             onChange={handleChange}
             placeholder="당신의 포스트를 짧게 소개해 보세요."
           ></textarea>
