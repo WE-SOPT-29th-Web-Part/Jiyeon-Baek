@@ -1,16 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ArticleBody = ({ setArticleData }) => {
-  const handleChange = (e) => {
-    setArticleData((articleData) => ({
-      ...articleData,
-      body: e.target.value,
-    }));
-  };
+const ArticleBody = ({ articleData, onDataChange }) => {
   return (
     <StyledBody
-      onChange={handleChange}
+      value={articleData.body}
+      onChange={(e) => onDataChange('body', e.target.value)}
       placeholder="당신의 이야기를 적어주세요."
     ></StyledBody>
   );

@@ -6,6 +6,10 @@ const ArticleTags = ({ articleData, onArrDataChange, onArrDataRemove }) => {
   const tags = articleData.tags;
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
+      if (e.target.value === '' || tags.includes(e.target.value)) {
+        e.target.value = '';
+        return;
+      }
       onArrDataChange('tags', e.target.value);
       e.target.value = '';
     }
@@ -13,11 +17,12 @@ const ArticleTags = ({ articleData, onArrDataChange, onArrDataRemove }) => {
   return (
     <StyledRoot>
       <StyledTag>
-        {tags.map((tag) => (
-          <span key={tag} onClick={(e) => onArrDataRemove('tags', tag)}>
-            {tag}
-          </span>
-        ))}
+        {tags &&
+          tags.map((tag) => (
+            <span key={tag} onClick={(e) => onArrDataRemove('tags', tag)}>
+              {tag}
+            </span>
+          ))}
       </StyledTag>
       <input
         type="text"

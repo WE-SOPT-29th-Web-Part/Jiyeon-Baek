@@ -1,18 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ArticleTitle = ({ setArticleData }) => {
-  const handleChange = (e) => {
-    setArticleData((articleData) => ({
-      ...articleData,
-      title: e.target.value,
-    }));
-  };
+const ArticleTitle = ({ articleData, onDataChange }) => {
   return (
     <>
       <StyledTitle
+        value={articleData.title}
         placeholder="제목을 입력하세요."
-        onChange={handleChange}
+        onChange={(e) => onDataChange('title', e.target.value)}
       ></StyledTitle>
       <StyledBox />
     </>
