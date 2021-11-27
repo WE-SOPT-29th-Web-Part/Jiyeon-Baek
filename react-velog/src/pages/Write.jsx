@@ -5,33 +5,76 @@ import ArticleBody from 'components/write/ArticleBody';
 import ArticleFooter from 'components/write/ArticleFooter';
 import ArticleModal from 'components/write/ArticleModal';
 import styled from 'styled-components';
+import { useLocation, useNavigate } from 'react-router';
+import { client } from 'libs/api';
 
 const Write = () => {
-  // 필요한 데이터를 입력과 동시에 받아오고 (state로 관리)
-  // 출간하기를 누르면 axios.post
-  const [articleData, setArticleData] = useState({
-    id: '', // articleData.length + 1
-    title: '',
-    body: '',
-    summary: '',
-    series: '',
-    tags: [],
-    thumbnail: '',
-    date: '', // 오늘 날짜
-  });
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const article = location.state;
+
+  const [articleData, setArticleData] = useState(
+    article ?? {
+      title: '',
+      body: '',
+      summary: '',
+      tags: [],
+      thumbnail: '',
+    },
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const createArticle = async () => {
+    // 수정 중일 때 출간하기 누르면 update(patch)
+    if (article) {
+      await client.patch(`article/${article.id}`, articleData);
+      navigate(`/article/${article.id}`, { state: articleData });
+      return;
+    }
+    // 새 글 작성 중일 때 출간하기 누르면 post
+    await client.post('/article', articleData);
+    navigate('/');
+  };
+
+  const handleDataChange = (key, value) => {
+    // key : title, body, summary, thumbnail
+    // value : e.target.value
+    const tempArticleData = { ...articleData };
+    tempArticleData[key] = value;
+    setArticleData(tempArticleData);
+  };
+
+  // 배열(tags)을 수정하기 위한 함수
+  const handleArrDataChange = (key, value) => {
+    const tempArticleData = { ...articleData };
+    tempArticleData[key] = [...tempArticleData[key], value];
+    setArticleData(tempArticleData);
+  };
+
+  const handleArrDataRemove = (key, value) => {
+    const tempArticleData = { ...articleData };
+    // value -> 클릭된 태그 속에 있는 글자
+    tempArticleData[key] = tempArticleData[key].filter((el) => el !== value);
+    setArticleData(tempArticleData);
+  };
+
   return (
     <StyledWritePage>
-      <ArticleTitle setArticleData={setArticleData} />
-      <ArticleTags articleData={articleData} setArticleData={setArticleData} />
-      <ArticleBody setArticleData={setArticleData} />
+      <ArticleTitle articleData={articleData} onDataChange={handleDataChange} />
+      <ArticleTags
+        articleData={articleData}
+        onArrDataChange={handleArrDataChange}
+        onArrDataRemove={handleArrDataRemove}
+      />
+      <ArticleBody articleData={articleData} onDataChange={handleDataChange} />
       <ArticleFooter setIsModalOpen={setIsModalOpen} />
       {isModalOpen && (
         <ArticleModal
           articleData={articleData}
-          setArticleData={setArticleData}
+          onDataChange={handleDataChange}
+          createArticle={createArticle}
           setIsModalOpen={setIsModalOpen}
         />
       )}
