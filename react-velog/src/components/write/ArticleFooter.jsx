@@ -8,7 +8,7 @@ const ArticleFooter = ({ setIsModalOpen }) => {
 
   return (
     <StyledFooter>
-      <button onClick={() => navigate('/')}>
+      <button onClick={() => navigate(-1)}>
         <ArrowIcon />
         <span>나가기</span>
       </button>
