@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Write from './pages/Write';
-import SeriesCategory from 'components/home/SeriesCategory';
+import Article from './pages/Article';
 import './App.css';
 
 function App() {
@@ -9,11 +9,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="/series" element={<SeriesCategory />} />
-          </Route>
           <Route path="/write" element={<Write />} />
-          <Route path="/*" element={() => <div>Page Not Found</div>} />
+          <Route path="/article/:id" element={<Article />} />
+          <Route path="/article/edit/:id" element={<Write />} />
+          <Route path="/*" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>
