@@ -2,10 +2,8 @@ import React from 'react';
 import Header from 'components/common/Header';
 import Profile from 'components/home/Profile';
 import HomeNav from 'components/home/HomeNav';
-import ArticlesContainer from 'components/home/ArticlesContainer';
-import SeriesCategory from 'components/home/SeriesCategory';
 import styled from 'styled-components';
-import { Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -14,10 +12,7 @@ const Home = () => {
       <StyledWrapper>
         <Profile />
         <HomeNav />
-        <Routes>
-          <Route path="/series" element={<SeriesCategory />} />
-          <Route path="/" element={<ArticlesContainer />} />
-        </Routes>
+        <Outlet />
       </StyledWrapper>
     </div>
   );
