@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GlobalStyle from './components/GlobalStyle';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Result from './components/Result';
@@ -35,17 +36,20 @@ function App() {
   };
 
   return (
-    <Root>
-      <Header />
-      <SearchBar getUserInfo={getUserInfo} />
-      <Result userInfo={userInfo} setUserInfo={setUserInfo} />
-    </Root>
+    <>
+      <GlobalStyle />
+      <StyledRoot>
+        <Header />
+        <SearchBar getUserInfo={getUserInfo} />
+        <Result userInfo={userInfo} setUserInfo={setUserInfo} />
+      </StyledRoot>
+    </>
   );
 }
 
 export default App;
 
-const Root = styled.div`
+const StyledRoot = styled.div`
   width: 100%;
   min-height: 100%;
   display: flex;
