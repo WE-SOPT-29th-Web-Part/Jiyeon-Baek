@@ -4,11 +4,12 @@ import Write from './pages/Write';
 import Article from './pages/Article';
 import SeriesCategory from 'components/home/SeriesCategory';
 import ArticlesContainer from 'components/home/ArticlesContainer';
-import './App.css';
+import GlobalStyle from 'components/common/GlobalStyle';
 
 function App() {
   return (
     <>
+      <GlobalStyle />
       <BrowserRouter>
         <Routes>
           <Route path="/write" element={<Write />} />
