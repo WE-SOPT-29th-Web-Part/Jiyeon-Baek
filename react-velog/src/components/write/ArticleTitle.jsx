@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ArticleTitle = ({ articleData, onDataChange }) => {
+const ArticleTitle = ({ title, onDataChange }) => {
   return (
     <>
       <StyledTitle
-        value={articleData.title}
+        value={title}
         placeholder="제목을 입력하세요."
         onChange={(e) => onDataChange('title', e.target.value)}
       ></StyledTitle>

@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StyledTag } from 'components/home/ArticleCard';
 
-const ArticleTags = ({ articleData, onArrDataChange, onArrDataRemove }) => {
-  const tags = articleData.tags;
+const ArticleTags = ({ tags, onArrDataChange, onArrDataRemove }) => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       if (e.target.value === '' || tags.includes(e.target.value)) {

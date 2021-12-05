@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { imageClient } from 'libs/api';
 
 const ArticleModal = ({
-  articleData,
+  title,
+  summary,
   setIsModalOpen,
   onDataChange,
   createArticle,
@@ -49,9 +50,9 @@ const ArticleModal = ({
             <label htmlFor="thumbnail">썸네일 업로드</label>
             <input type="file" id="thumbnail" onChange={handleImageChange} />
           </StyledImgInput>
-          <h4>{articleData.title}</h4>
+          <h4>{title}</h4>
           <textarea
-            value={articleData.summary}
+            value={summary}
             onChange={handleChange}
             placeholder="당신의 포스트를 짧게 소개해 보세요."
           ></textarea>

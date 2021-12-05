@@ -14,6 +14,7 @@ const Write = () => {
   const location = useLocation();
   const article = location.state;
 
+  // Write 페이지에 들어온 목적이 게시글 작성인지 수정인지 분리하기 위해
   const [articleData, setArticleData] = useState(
     article ?? {
       title: '',
@@ -67,17 +68,18 @@ const Write = () => {
 
   return (
     <StyledWritePage>
-      <ArticleTitle articleData={articleData} onDataChange={handleDataChange} />
+      <ArticleTitle title={articleData.title} onDataChange={handleDataChange} />
       <ArticleTags
-        articleData={articleData}
+        tags={articleData.tags}
         onArrDataChange={handleArrDataChange}
         onArrDataRemove={handleArrDataRemove}
       />
-      <ArticleBody articleData={articleData} onDataChange={handleDataChange} />
+      <ArticleBody body={articleData.body} onDataChange={handleDataChange} />
       <ArticleFooter setIsModalOpen={setIsModalOpen} />
       {isModalOpen && (
         <ArticleModal
-          articleData={articleData}
+          title={articleData.title}
+          summary={articleData.summary}
           onDataChange={handleDataChange}
           createArticle={createArticle}
           setIsModalOpen={setIsModalOpen}
