@@ -11,8 +11,10 @@ import { client } from 'libs/api';
 const Write = () => {
   const navigate = useNavigate();
 
+  // useLocation으로 데이터 전달받기
   const location = useLocation();
   const article = location.state;
+  // article은 수정할 때 받아온 데이터, articleData가 최신 데이터
 
   // Write 페이지에 들어온 목적이 게시글 작성인지 수정인지 분리하기 위해
   const [articleData, setArticleData] = useState(
