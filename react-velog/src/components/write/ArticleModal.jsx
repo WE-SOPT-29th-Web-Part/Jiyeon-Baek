@@ -27,12 +27,14 @@ const ArticleModal = ({
     onDataChange('summary', e.target.value);
   };
 
+  // 이미지 업로드 구현
   const handleImageChange = async (e) => {
-    // 서버에 이미지 보내고(post), 정제된 이미지 url 받아오기(get)
     const formData = new FormData();
     const imageFile = e.target.files[0];
     formData.append('file', imageFile);
-    const imageResponse = await imageClient.post('', formData); // baseURL 수정할 게 없으니까 비워둠
+
+    // 서버에 이미지 보내고(post), 정제된 이미지 url 받아오기
+    const imageResponse = await imageClient.post('', formData); // baseURL 수정할 게 없으니까 비워둠 (api.js 참고)
     const imageUrl = imageResponse.data.url; // 이 url을 articleData의 thumbnail에 넣어서 post
     onDataChange('thumbnail', imageUrl);
   };
