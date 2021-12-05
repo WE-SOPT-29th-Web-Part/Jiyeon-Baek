@@ -8,8 +8,8 @@ import ImgWrapper from 'components/common/ImgWrapper';
 import { StyledTag } from 'components/home/ArticleCard';
 
 const Article = () => {
-  // 데이터를 넘기는 방법 -> Link
-  // 데이터를 받는 방법 -> useLocation
+  // 데이터를 넘기는 방법 -> Link (ArticleCard.jsx)
+  // 데이터를 받는 방법 -> useLocation (Article.jsx)
   const location = useLocation();
   const article = location.state;
   const { title, body, thumbnail, date, tags } = article;
