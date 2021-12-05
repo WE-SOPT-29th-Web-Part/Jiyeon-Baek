@@ -38,14 +38,19 @@ const Write = () => {
     navigate('/');
   };
 
+  // title, body, summary, thumbnail을 수정할 때 사용하는 함수
+  // 각각 나눠서 함수 정의하지 않고 key, value를 활용해 한 번에 정의
+  // key : title, body, summary, thumbnail
+  // value : e.target.value
   const handleDataChange = (key, value) => {
-    // key : title, body, summary, thumbnail
-    // value : e.target.value
+    // 상태는 불변성을 유지해야 하므로 아래처럼 객체 복사
     const tempArticleData = { ...articleData };
     tempArticleData[key] = value;
     setArticleData(tempArticleData);
   };
 
+  // handleDataChange는 원시 타입만 다룰 수 있음
+  // 따라서 Array를 수정하는 함수는 따로 정의해야 함
   // 배열(tags)을 수정하기 위한 함수
   const handleArrDataChange = (key, value) => {
     const tempArticleData = { ...articleData };
