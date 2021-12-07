@@ -5,12 +5,14 @@ import Article from './pages/Article';
 import SeriesCategory from 'components/home/SeriesCategory';
 import ArticlesContainer from 'components/home/ArticlesContainer';
 import GlobalStyle from 'components/common/GlobalStyle';
+import ScrollToTop from 'components/common/ScrollToTop';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/write" element={<Write />} />
           <Route path="/article/:id" element={<Article />} />
