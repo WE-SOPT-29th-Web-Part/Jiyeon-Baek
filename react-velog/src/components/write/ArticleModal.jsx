@@ -11,9 +11,11 @@ const ArticleModal = ({
   onDataChange,
   createArticle,
 }) => {
-  const [count, setCount] = useState(0);
-  const [color, setColor] = useState('rgb(134, 142, 150)');
   const maxLength = 150;
+  const [count, setCount] = useState(summary.length);
+  const [color, setColor] = useState(
+    count < maxLength ? 'rgb(134, 142, 150)' : 'rgb(250, 82, 82)',
+  );
   const [previewImage, setPreviewImage] = useState(<DefaultThumbnail />);
 
   // 150자 체크
