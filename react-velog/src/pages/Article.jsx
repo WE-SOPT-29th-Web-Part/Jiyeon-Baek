@@ -17,25 +17,27 @@ const Article = () => {
   return (
     <StyledArticle>
       <Header />
-      <h1>{title}</h1>
-      <ArticleOptions article={article} />
-      <StyledArticleInfo>
-        <span>백지연</span>
-        <span>·</span>
-        <span>{date}</span>
-      </StyledArticleInfo>
-      <StyledTag>
-        {tags.map((tag) => (
-          <span key={tag}>{tag}</span>
-        ))}
-      </StyledTag>
-      {thumbnail && (
-        <ImgWrapper ratio="50%">
-          <img src={thumbnail} alt="thumbnail"></img>
-        </ImgWrapper>
-      )}
-      <StyledBody>{body}</StyledBody>
-      <Profile />
+      <StyledContainer>
+        <h1>{title}</h1>
+        <ArticleOptions article={article} />
+        <StyledArticleInfo>
+          <span>백지연</span>
+          <span>·</span>
+          <span>{date}</span>
+        </StyledArticleInfo>
+        <StyledTag>
+          {tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </StyledTag>
+        {thumbnail && (
+          <ImgWrapper ratio="50%">
+            <StyledImg src={thumbnail} alt="thumbnail"></StyledImg>
+          </ImgWrapper>
+        )}
+        <StyledBody>{body}</StyledBody>
+        <Profile />
+      </StyledContainer>
     </StyledArticle>
   );
 };
@@ -44,6 +46,11 @@ export default Article;
 
 const StyledArticle = styled.div`
   margin-bottom: 6rem;
+`;
+
+const StyledContainer = styled.div`
+  width: 48rem;
+  margin: 0 auto;
   & > h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -69,4 +76,12 @@ const StyledArticleInfo = styled.div`
   & > span + span {
     margin-left: 0.5rem;
   }
+`;
+
+const StyledImg = styled.img`
+  width: 75% !important;
+  height: auto !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
 `;
