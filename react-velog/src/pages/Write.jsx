@@ -82,6 +82,7 @@ const Write = () => {
         <ArticleModal
           title={articleData.title}
           summary={articleData.summary}
+          thumbnail={articleData.thumbnail}
           onDataChange={handleDataChange}
           createArticle={createArticle}
           setIsModalOpen={setIsModalOpen}

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { imageClient } from 'libs/api';
-import { ReactComponent as Thumbnail } from 'assets/icons/thumbnail.svg';
+import { ReactComponent as DefaultThumbnail } from 'assets/icons/thumbnail.svg';
 
 const ArticleModal = ({
   title,
   summary,
+  thumbnail,
   setIsModalOpen,
   onDataChange,
   createArticle,
@@ -13,7 +14,7 @@ const ArticleModal = ({
   const [count, setCount] = useState(0);
   const [color, setColor] = useState('rgb(134, 142, 150)');
   const maxLength = 150;
-  const [previewImage, setPreviewImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(<DefaultThumbnail />);
 
   // 150자 체크
   const handleChange = (e) => {
@@ -53,11 +54,7 @@ const ArticleModal = ({
         <StyledLeft>
           <h3>포스트 미리보기</h3>
           <StyledImgInput>
-            {previewImage ? (
-              <img src={previewImage} alt="썸네일" />
-            ) : (
-              <Thumbnail />
-            )}
+            {thumbnail ? <img src={thumbnail} alt="썸네일" /> : previewImage}
             <label htmlFor="thumbnail">썸네일 업로드</label>
             <input type="file" id="thumbnail" onChange={handleImageChange} />
           </StyledImgInput>
