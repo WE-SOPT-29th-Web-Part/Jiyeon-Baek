@@ -9,7 +9,7 @@ const ArticlesContainer = () => {
   // 다회 통신 : axios.create (libs의 api.js)
   const getArticleData = async () => {
     const { data } = await client.get('/article');
-    setArticleData(data);
+    setArticleData(data.reverse());
   };
 
   // 컴포넌트가 마운트된 직후 실행
