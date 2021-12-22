@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { imageClient } from 'libs/api';
+import { ReactComponent as DefaultThumbnail } from 'assets/icons/thumbnail.svg';
 
 const ArticleModal = ({
   title,
   summary,
+  thumbnail,
   setIsModalOpen,
   onDataChange,
   createArticle,
 }) => {
-  // 150자 체크
-  const [count, setCount] = useState(0);
-  const [color, setColor] = useState('rgb(134, 142, 150)');
   const maxLength = 150;
+  const [count, setCount] = useState(summary.length);
+  const [color, setColor] = useState(
+    count < maxLength ? 'rgb(134, 142, 150)' : 'rgb(250, 82, 82)',
+  );
+  const [previewImage, setPreviewImage] = useState(<DefaultThumbnail />);
+
+  // 150자 체크
   const handleChange = (e) => {
     const previewContent = e.target.value;
     const lengthCheckRegEx = new RegExp('^.{' + maxLength + ',}$');
@@ -38,6 +44,9 @@ const ArticleModal = ({
     const imageResponse = await imageClient.post('', formData); // baseURL 수정할 게 없으니까 비워둠 (api.js 참고)
     const imageUrl = imageResponse.data.url; // 이 url을 articleData의 thumbnail에 넣어서 post
     onDataChange('thumbnail', imageUrl);
+
+    // 썸네일 바꾸기
+    imageUrl && setPreviewImage(imageUrl);
   };
 
   return (
@@ -47,6 +56,7 @@ const ArticleModal = ({
         <StyledLeft>
           <h3>포스트 미리보기</h3>
           <StyledImgInput>
+            {thumbnail ? <img src={thumbnail} alt="썸네일" /> : previewImage}
             <label htmlFor="thumbnail">썸네일 업로드</label>
             <input type="file" id="thumbnail" onChange={handleImageChange} />
           </StyledImgInput>
@@ -133,13 +143,22 @@ const StyledLeft = styled.div`
 
 const StyledImgInput = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgb(233, 236, 239);
+  padding: 1rem;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
 
   & > label {
     cursor: pointer;
-    margin: 1rem 0;
+    margin-top: 1rem;
     padding: 0.25rem 2rem;
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 20%) 0px 0px 8px;
